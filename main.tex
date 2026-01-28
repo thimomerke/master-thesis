@@ -1,0 +1,75 @@
+\documentclass[11pt]{report}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{setspace}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{lipsum}
+\usepackage[style=apa,backend=biber]{biblatex}
+\usepackage{sectsty}
+\usepackage{nicematrix}
+\usepackage{adjustbox}
+\usepackage{rotating, float, caption}
+\usepackage{enumitem}
+\usepackage{nomencl}
+\usepackage{placeins}
+\usepackage{wrapfig}
+\usepackage[table,xcdraw]{xcolor}
+
+\title{Strategic Carbon Removal: A Dynamic Portfolio Model of Durable and Cost-Effective CDR Pathways}
+\author{Thimo Merke}
+\date{May 4, 2026}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makechapterhead}{50\p@}{0pt}{}{}
+\patchcmd{\@makeschapterhead}{50\p@}{0pt}{}{}
+\makeatother
+
+%define custome chapter command to remove the "Chapter N" from heading
+\newcommand{\mychapter}[2]{
+    \setcounter{chapter}{#1}
+    \setcounter{section}{0}
+    \chapter*{#2}
+    \addcontentsline{toc}{chapter}{#2}
+}
+
+\onehalfspacing
+\chapterfont{\fontsize{30}{15}\selectfont}
+\sectionfont{\fontsize{14}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+
+\addbibresource{references.bib}
+
+\begin{document}
+
+\renewcommand{\thepage}{\roman{page}}
+\setlength{\parindent}{0pt}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+
+\input{title.tex}
+
+%\input{abstract.tex}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+\makenomenclature
+%\input{acronyms.tex}
+\printnomenclature
+\newpage
+
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+\input{intro.tex}
+\input{lit_review.tex}
+\input{portfolio_development.tex}
+\input{conclusion.tex}
+
+\appendix
+\input{appendix.tex}
+
+\printbibliography
+
+%\input{declaration.tex}
+\end{document}

@@ -1,0 +1,37 @@
+\mychapter{1}{Introduction}
+In the Paris Agreement of 2015, 195 countries and their governments agreed on global efforts to reduce the amount of carbon dioxide (CO$_2$) emitted into the atmosphere, with the goal of limiting global atmospheric warming to "well below" 2 °C, ideally 1.5 °C, compared to the pre-industrial baseline.\vspace{2mm}
+
+Although the primary imperative of the agreement is emission abatement, including the decarbonization of key industries and the transport sector, IPCC projections increasingly factor in the use of negative emissions technologies (NETs), also known as carbon dioxide removal (CDR), which remove CO$_2$ from the atmosphere. These technologies are projected to be used to counterbalance the about 10\% "hard-to-abate residual" CO$_2$ emissions from industries such as air travel and transport, whose decarbonization is not economically feasible \parencite{prutz_understanding_2023}. This means that between the present day and the mid-century, NETs must be developed from proofs-of-concept and pilot plants to a Gigatons-per-year industry in order to acomplish the goals of the Paris Agreement.
+
+\section{The Spectrum of Carbon Removal}
+The term negative emissions technologies encompasses a wide range of diverse approaches, which can generally be classified on a spectrum going from enhanced natural sinks to engineered (so-called "novel") carbon removal technologies. This thesis focuses on four distinct approaches that are sufficiently advanced on the maturity curve and represent the structural trade-offs of the sector: Afforestation and Reforestation (A/R), Enhanced Rock Weathering (ERW), Bioenergy with Carbon Capture and Storage (BECCS), and Direct Air Capture (DAC).\vspace{2mm}
+
+A/R involves the restoration of previously deforested areas, either through natural regeneration or manual plantation, and represents the fully natural side of the spectrum. Carbon removal is achieved through biomass accumulation, which is considered a mature and well-understood process. Trade-offs include the constant reversal risk due to wildfires or droughts, which threaten the permanence of the stored carbon, as well as the question of land-use competition and biodiversity in case of large-scale deployment \parencite{gunther_carbon_2024}.\vspace{2mm}
+
+In contrast, DAC is situated on the entirely engineered end of the spectrum. It uses chemical sorbents or solvents (in solid and liquid DAC, respectively) to strip CO$_2$ directly from the ambient air. It is thermodynamically challenging due to the low concentration of CO$_2$ in the atmosphere \parencite{lackner_thermodynamics_2013}, but offers a high verifiability and durability, as well as location flexibility. However, it is currently prohibitively expensive and still requires significant capital investments and development efforts to achieve a learning-curve-based cost reduction and energy cost optimization \parencite{lackner_buying_2021, babacan_role_2020}\vspace{2mm}
+
+Finally, ERW and BECCS occupy a hybrid space. ERW uses ground silicate rock materials, spread out on large land areas, to accelerate the natural geological weathering process, converting atmospheric CO$_2$ to stable, dissolved carbonates \parencite{larkin_carbon_2023}. This method is both deployable at scale and verifiably permanent, but entails significant logistical challenges comparable to the global mining industry \parencite{madankan_larger_2025}. BECCS combines biomass energy generation, either from waste materials or purpose-grown crops, with carbon capture and storage (CCS) to provide energy while removing CO$_2$ from the atmosphere. However, the use of purpose-grown energy crops again poses the risk of land-use competition and biodiversity reduction \parencite{gaucher_leveraging_2025}. For the purpose of this thesis, only BECCS using waste biomass will be considered.
+\begin{table}[]
+\small
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lllll}
+Technology     & Classification     & Storage Mechanism   & Storage Durability     & Key Resource Constraint  \\ \hline
+\textbf{A/R}   & Nature-Based       & Biomass & Decades   to Centuries & Land, Water             \\
+\textbf{ERW}   & Hybrid/Geochemical & Chemical   & Millennia              & Mining Logistics, Energy \\
+\textbf{BECCS} & Hybrid/Industrial  & Geological                  & Millennia              & Biomass Supply (Land)   \\
+\textbf{DAC}   & Engineered/Novel   & Geological                  & Millennia              & Energy, Capital         
+\end{tabular}
+\caption{Classification and characteristics of NETs}
+\end{table}
+
+\section{Voluntary Carbon Markets and the CDR Governance Paradox}
+To reliably meet global net-zero goals, CDR governance frameworks must incentivize the investment in and use of NETs that deliver verifiable, permanent removals with a proven additionality, that is, a net-negative effect on atmospheric CO$_2$ levels. Historically, however, voluntary carbon markets (VCMs) - markets in which carbon credits are traded on a voluntary basis - have prioritized volume and price over verifiability and permanence \parencite{chawla_role_2023}. Prices for avoidance credits, which typically involve the buying party paying the selling party for merely avoiding carbon emissions, start at 4 US\$ per tonne of CO$_2$, while high-quality credits, which use technologies such as DAC, cost up to 500 US\$ per tonne of CO$_2$ \parencite{reichelstein_accounting_2024}.\vspace{2mm}
+
+This market failure creates three primary problems. First, an expansive supply of avoidance credits, often from questionable forestry projects \parencite{chawla_role_2023}, allows actors to make inflated claims of carbon neutrality while making little to no real impact. 
+Secondly, VCMs are, by nature, based on present supply and demand. They do not consider the future requirements for novel NETs, which will arise after the naturally constrained options for such forestry projects, including A/R, run out. This risks a suboptimal allocation of investments, delayed availability of novel NETs, and ultimately a failure to reach the required CDR targets. Finally, governance of CDR is not merely a technological, but also a socio-political issue. The public acceptance of large scale mining operations for ERW or geological carbon storage for BECCS and typically DAC remains overlooked \parencite{karytsas_transnational_2023}.
+
+\section{Motivation for the Construction of Dynamic CDR Portfolios}
+The primary goal of this thesis is to propose a solution the first two problems, while also considering some aspects of the third.\vspace{2mm}
+
+It provides an overview of the current state of negative emission technologies and the carbon removal market, constructs techno-economic models of the four relevant NETs, and ultimately proposes two types of optimized portfolios of carbon removal technologies: Static portfolios based on a one-off removal of a given quantity of CO$_2$, and dynamic portfolios, which can fulfill not only the present requirements, but the projected increasing CDR requirements of future years.
+It should inform investors and policy makers on which technologies should be deployed in which timelines, to stay aligned with the goals of the Paris agreement of limiting global warming to below 2° C.

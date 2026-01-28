@@ -1,0 +1,116 @@
+\mychapter{5}{Appendix}
+\section{Derivation of formulas (3.2) and (3.6)}
+Derivation of equation 3.2:\hfill \break
+Activation energy \(E_a\) from \textcite{wogelius_olivine_1992}:
+\[
+  E_a = 2.303 * R * \frac{\log_{10}R_1-\log_{10}R_2}{\frac{1}{T_2}-\frac{1}{T_1}}
+\]
+\[
+  \Leftrightarrow \log_{10}R_1 = \frac{E_a}{2.303*R}*\left(\frac{1}{T_2}-\frac{1}{T_1}\right) + \log_{10}R_2
+\]
+with \(T_i\) being the temperature in Kelvin and \(R_i\) being the dissolution rate at the respective temperature. The activation energy was computed by \textcite{wogelius_olivine_1992} to be 79.5 \(\frac{kJ}{mol}\) of olivine rock, based on their own experiments and previous literature.\hfill \break
+\break
+Derivation of equation 3.6:
+\[
+  L = \int_0^{\infty}m(y)\,dy= \int_0^Y\left(1-\frac{y}{Y}\right)^3\,dy \quad\text{for } 0 \le y \le Y
+\]
+by substituting \(u = \frac{y}{Y}\), rewrite as
+\[
+  L = \int_0^1(1-u)^3\,du*Y = Y\int_0^1(1-u)^3\,du
+\]
+solving to
+\[
+  L = Y\left[-\frac{(1-u)^4}{4}\right]_{0}^{1} = Y\left[\left(-\frac{(1-1)^4}{4}\right)-\left(-\frac{(1-0)^4}{4}\right)\right] = \frac{Y}{4}
+\]
+
+\newpage
+\section{Sample ERW mining operation}
+\begin{table}[]
+  \begin{tabular}{lll}
+    \multicolumn{2}{l}{\textbf{Sample mining operation - 15 Mt CO$_2$ / yr}}             &                                  \\ \hline
+    \hline
+    \multicolumn{1}{|l|}{Annual rock volume}     & \multicolumn{1}{l|}{Mt}        & \multicolumn{1}{l|}{15}          \\ \hline
+    \multicolumn{1}{|l|}{Daily rock volume}      & \multicolumn{1}{l|}{t}         & \multicolumn{1}{l|}{41096}       \\ \hline
+    \multicolumn{1}{|l|}{Operating hours}        & \multicolumn{1}{l|}{h / day}   & \multicolumn{1}{l|}{12}          \\ \hline
+    \multicolumn{1}{|l|}{Machinery lifetime}     & \multicolumn{1}{l|}{yr}        & \multicolumn{1}{l|}{20}          \\ \hline
+    &                                &                                  \\
+    \textbf{Mining}                              &                                &                                  \\ \hline
+    \multicolumn{1}{|l|}{Drill rig capacity}     & \multicolumn{1}{l|}{t / day}   & \multicolumn{1}{l|}{50000}       \\ \hline
+    \multicolumn{1}{|l|}{Drill rigs required}    & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{1}           \\ \hline
+    \multicolumn{1}{|l|}{Drill rig unit price}   & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,500,000}   \\ \hline
+    \multicolumn{1}{|l|}{Drill rig cost}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,500,000}   \\ \hline
+    &                                &                                  \\ \hline
+    \multicolumn{1}{|l|}{Loading time}           & \multicolumn{1}{l|}{min}       & \multicolumn{1}{l|}{2}           \\ \hline
+    \multicolumn{1}{|l|}{Loader capacity}        & \multicolumn{1}{l|}{t}         & \multicolumn{1}{l|}{70}          \\ \hline
+    \multicolumn{1}{|l|}{Loader capacity}        & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{2100}        \\ \hline
+    \multicolumn{1}{|l|}{Loaders required}       & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{2}           \\ \hline
+    \multicolumn{1}{|l|}{Loader unit price}      & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{2,000,000}   \\ \hline
+    \multicolumn{1}{|l|}{Loader cost}            & \multicolumn{1}{l|}{\textbf{}} & \multicolumn{1}{l|}{4,000,000}   \\ \hline
+    &                                &                                  \\ \hline
+    \multicolumn{1}{|l|}{Truck capacity}         & \multicolumn{1}{l|}{t}         & \multicolumn{1}{l|}{100}         \\ \hline
+    \multicolumn{1}{|l|}{Truck avg. speed}       & \multicolumn{1}{l|}{km / h}    & \multicolumn{1}{l|}{20}          \\ \hline
+    \multicolumn{1}{|l|}{Distance pit - grinder} & \multicolumn{1}{l|}{km}        & \multicolumn{1}{l|}{5}           \\ \hline
+    \multicolumn{1}{|l|}{Truck troundtrip time}  & \multicolumn{1}{l|}{h}         & \multicolumn{1}{l|}{0.57}        \\ \hline
+    \multicolumn{1}{|l|}{Truck capacity}         & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{176}         \\ \hline
+    \multicolumn{1}{|l|}{Trucks required}        & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{20}          \\ \hline
+    \multicolumn{1}{|l|}{Truck unit price}       & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{500,000}     \\ \hline
+    \multicolumn{1}{|l|}{Truck cost}             & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{10,000,000}  \\ \hline
+    &                                &                                  \\ \hline
+    \multicolumn{1}{|l|}{CapEx - Mining}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{15,500,000}  \\ \hline
+    \multicolumn{1}{|l|}{CapEx per tonne}        & \multicolumn{1}{l|}{\$ / t OL} & \multicolumn{1}{l|}{0.10}        \\ \hline
+    &                                &                                  \\
+    \textbf{Processing}                          &                                &                                  \\ \hline
+    \multicolumn{1}{|l|}{Crusher capacity}       & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{600}         \\ \hline
+    \multicolumn{1}{|l|}{Crushers required}      & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{6}           \\ \hline
+    \multicolumn{1}{|l|}{Crusher unit price}     & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{2,500,000}   \\ \hline
+    \multicolumn{1}{|l|}{Crusher cost}           & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{15,000,000}  \\ \hline
+    &                                &                                  \\ \hline
+    \multicolumn{1}{|l|}{P Grinder capacity}     & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{100}         \\ \hline
+    \multicolumn{1}{|l|}{P Grinders required}    & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{35}          \\ \hline
+    \multicolumn{1}{|l|}{P Grinder unit price}   & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,000,000}   \\ \hline
+    \multicolumn{1}{|l|}{P Grinder cost}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{35,000,000}  \\ \hline
+    \multicolumn{1}{|l|}{S Grinder capacity}     & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{100}         \\ \hline
+    \multicolumn{1}{|l|}{S Grinders required}    & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{35}          \\ \hline
+    \multicolumn{1}{|l|}{S Grinder unit price}   & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,000,000}   \\ \hline
+    \multicolumn{1}{|l|}{S Grinder cost}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{35,000,000}  \\ \hline
+    &                                &                                  \\ \hline
+    \multicolumn{1}{|l|}{CapEx - Processing}     & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{85,000,000}  \\ \hline
+    \multicolumn{1}{|l|}{CapEx per tonne}        & \multicolumn{1}{l|}{\$ / t OL} & \multicolumn{1}{l|}{0.53}        \\ \hline
+    &                                &                                  \\
+    \textbf{Total}                               & \textit{}                      & \textit{}                        \\ \hline
+    \multicolumn{1}{|l|}{Total CapEx}            & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{100,500,000} \\ \hline
+    \multicolumn{1}{|l|}{Total CapEx per tonne}  & \multicolumn{1}{l|}{\$ / t OL} & \multicolumn{1}{l|}{0.63}        \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[]
+\begin{tabular}{lll}
+\multicolumn{2}{l}{\textbf{Sample mining operation - 15 Mt / yr}}                     &                                  \\ \hline
+\textbf{Fixed cost}                                 &                                 &                                  \\ \hline
+\multicolumn{1}{|l|}{Total CapEx}                   & \multicolumn{1}{l|}{\$}         & \multicolumn{1}{l|}{100,500,000} \\ \hline
+\multicolumn{1}{|l|}{Annual maintenance}            & \multicolumn{1}{l|}{\%}         & \multicolumn{1}{l|}{2.2}         \\ \hline
+\multicolumn{1}{|l|}{Annual maintenance cost}       & \multicolumn{1}{l|}{\$}         & \multicolumn{1}{l|}{2,211,000}   \\ \hline
+\textbf{Total fixed cost}                                 & \textbf{\$ / t OL}              & \textbf{0.147}                   \\
+                                                    &                                 &                                  \\
+\textbf{Variable cost}                              &                                 &                                  \\ \hline
+\multicolumn{1}{|l|}{Energy - drilling \& blasting} & \multicolumn{1}{l|}{kWh / t OL} & \multicolumn{1}{l|}{5.23}        \\ \hline
+\multicolumn{1}{|l|}{Energy cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{0.23}        \\ \hline
+\multicolumn{1}{|l|}{Labour}                        & \multicolumn{1}{l|}{h / t OL}   & \multicolumn{1}{l|}{0.14}        \\ \hline
+\multicolumn{1}{|l|}{Labour cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{9.84}        \\ \hline
+\textit{\textbf{Mining   cost}}                     & \textit{\textbf{\$ / t OL}}     & \textit{\textbf{10.07}}          \\ \hline
+\multicolumn{1}{|l|}{Electric energy - grinding}    & \multicolumn{1}{l|}{kWh / t OL} & \multicolumn{1}{l|}{150.347}     \\ \hline
+\multicolumn{1}{|l|}{Energy cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{6.62}        \\ \hline
+\multicolumn{1}{|l|}{Labour}                        & \multicolumn{1}{l|}{h / t OL}   & \multicolumn{1}{l|}{0.00}        \\ \hline
+\multicolumn{1}{|l|}{Labour cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{0.00}        \\ \hline
+\textit{\textbf{Processing cost}}                   & \textit{\textbf{\$ / t OL}}     & \textit{\textbf{6.62}}           \\ \hline
+\multicolumn{1}{|l|}{Avg. transport distance rail}  & \multicolumn{1}{l|}{km}         & \multicolumn{1}{l|}{1000}        \\ \hline
+\multicolumn{1}{|l|}{Avg. transport distance road}  & \multicolumn{1}{l|}{km}         & \multicolumn{1}{l|}{200}         \\ \hline
+\multicolumn{1}{|l|}{Transport cost rail}           & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{8.08}        \\ \hline
+\multicolumn{1}{|l|}{Transport cost road}           & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{6.18}        \\ \hline
+\multicolumn{1}{|l|}{Spreading time}                & \multicolumn{1}{l|}{h / ha}     & \multicolumn{1}{l|}{0.5}         \\ \hline
+\multicolumn{1}{|l|}{Spreading cost}                & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{2.58}        \\ \hline
+\textit{\textbf{Application cost}}                  & \textit{\textbf{\$ / t OL}}     & \textit{\textbf{16.83}}          \\
+\textbf{Total variable cost}                        & \textbf{\$ / t OL}              & \textbf{33.51}                   \\
+                                                    &                                 &                                 
+\end{tabular}
+\end{table}
