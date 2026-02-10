@@ -13,6 +13,10 @@
 \usepackage{placeins}
 \usepackage{wrapfig}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{chngcntr}
+\usepackage{newclude}
+\usepackage{booktabs}
+
 
 \title{Strategic Carbon Removal: A Dynamic Portfolio Model of Durable and Cost-Effective CDR Pathways}
 \author{Thimo Merke}
@@ -28,14 +32,21 @@
 \newcommand{\mychapter}[2]{
     \setcounter{chapter}{#1}
     \setcounter{section}{0}
+    \setcounter{table}{0}
+    \setcounter{figure}{0}
     \chapter*{#2}
     \addcontentsline{toc}{chapter}{#2}
 }
+
+\setcounter{tocdepth}{1}
 
 \onehalfspacing
 \chapterfont{\fontsize{30}{15}\selectfont}
 \sectionfont{\fontsize{14}{15}\selectfont}
 \subsectionfont{\fontsize{12}{15}\selectfont}
+ 
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
 
 \addbibresource{references.bib}
 

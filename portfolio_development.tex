@@ -1,6 +1,18 @@
-\mychapter{3}{Development of optimal CDR portfolios}
-\section{Methdology}
-\include{ewr.tex}
+\mychapter{3}{Techno-economic modeling of NETs}
+In order to develop optimal portfolios of negative emission technologies, the four relevant approaches were systematically modeled from a technological and economic perspective. The goal of these techno-economic models was to calculate the country-level availability and cost of these NET's in order to construct a global marginal abatement cost curve (MACC). These MACC's then served as the basis for a range of optimization models, which were used to generate a optimal portfolios of NET construction and deployment in order to deliver the required carbon removal.
+
+\include*{afrf}
+\include*{bicrs}
+\include*{ewr}
+\include*{dac}
+
+\mychapter{4}{Development of optimal CDR portfolios}
+To construct the ideal portfolios, two types of optimization approaches were considered. First, a simple static portfolio was created, which is based on a one-off removal of a given quantity of carbon dioxide on a give timeline, such as the removal of ten gigatonnes of CO$_2$ over five years. In the second step, this simple static approach was evolved into a dynamic portfolio approach, which considers a changing (increasing) annual requirement of CDR in order to reach certain targets on a certain timeline, such as the annual removal of 10 gigatonnes of CO$_2$ by the year 2050.\vspace{2mm}
+
+For both types, the four previously described techno-economic models were implemented in the Python programming language, using the Pyomo package and the Gurobi solver. For the portfolio optimization, multi‑period linear programs (LPs with SOS2) were used, for which the objective was to minimize the total costs, constrained by the availability of each NET, as defined above, and the requirement of fulfilling the respective CDR target. The cost of BiCRS and ERW are modeled using piecewise linear functions derived from the respective MACC's in order to allow the model to choose any operating level and compute the resulting total costs without introducing nonlinearities. (The A/R model is linear and does not require the use of piecewise approximation.) Piecewise functions were also applied for the rock use of ERW and the learning curve of DAC. In Pyomo, they were implement via SOS2 piecewise constraints, which approximate nonlinear cumulative cost curves. The CapEx for DAC are defined by a bilinear function of the amount built in a given year and the learning-curve based cost per unit. A McCormick envelope \parencite{mccormick_computability_1976} was used as a linear approximation for this function by introducing an auxiliary variable for CapEx and four linear constraints with variable bounds.
+
 \section{Static portfolio}
+\include*{stat_port}
 \section{Dynamic portfolio over years}
+\include*{dyn_port}
 \section{Discussion}

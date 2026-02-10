@@ -1,11 +1,13 @@
 \section{Enhanced Weathering}
-The lifecycle of enhanced rock weathering consists of three stages: 1. The mining and processing stage, 2. the transport and application stage, and 3. the weathering and dissolution stage. The first two stages lead from the rock in a mine to the application of the rock dust on the field and usually cause significant carbon emissions, while the final stage, which spans years to decades, contributes the negative emissions by drawing carbon dioxide from the air during weathering.
-\subsection{Mining and processing}
-\subsection{Transport and application}
+The modeled lifecycle of enhanced rock weathering consists of three stages: 1. Mining and processing stage, 2. transport and application stage, and 3. weathering and dissolution. The first two stages lead from the rock in a mine to the application of rock dust on the field and usually cause significant carbon emissions, while the final stage, which spans years to decades, contributes negative emissions by drawing carbon dioxide from the air during weathering.
+\subsection{Mining, processing and application}
+As an input material, ERW can use a wide range of silicate-rich rocks, such as olivine-rich forsterite or volcanic basalt. these materials are abundantly available around the world \parencite{breunig_life_2024}, and can usually be extracted using open-pit surface quarrying.\vspace{2mm}
+
+The mining process typically starts with the drilling and blasting of rock formations in order to break loose large rock chunks, which are then loaded onto large haul trucks for transportation to the processing facility. The processing then occurs in multiple stages, during which the rocks are crushed and ground into a fine dust with a particle size of no more than 10 microns.\vspace{2mm}
+
+The finely ground rock dust is then loaded onto trucks and transported to the application sites, typically agricultural lands. To apply the rock dust, agricultural machinery such as fertilizer spreaders are used.
 \subsection{Weathering}
-\subsection{Calculation of steady-state olivine weathering rate and levelized cost}
-\subsubsection{Weathering rate and dissolution time}
-In the first step, calculating the weathering rate and total dissolution time of olivine rock, depending on the soil acidity and temperature is necessary.\vspace{2mm}
+To calculate the weathering rate and total dissolution time of olivine rock, a shrinking core model depending on the soil acidity and temperature is used.\vspace{2mm}
 
 Weathering rates for olivine-rich rock material, dependent on soil pH values, are available from the literature, based on a range of experiments conducted at a constant temperature of 25 °C (See Fig. 2.1).
 \begin{figure}[h]
@@ -32,8 +34,8 @@ where \(d_0\) is the beginning grain size in meters, \(\Omega\) is the molar vol
 \begin{equation}
   t = \frac{d_0[1-(1-\frac{X}{100})^\frac{1}{3}]}{2R_{\text{diss}}\Omega}
 \end{equation}
-with \(X\) being the desired dissolution grade in percent.\vspace{2mm}
-
+with \(X\) being the desired dissolution grade in percent.
+\subsection{Steady-state potential and costs}
 \subsubsection{Effective annual dissolution rate}
 In the second step, the required annual application rate per hectare to reach a steady state of application and dissolution has to be calculated.
 Let the remaining fraction of the initial rock mass at time \(t\) be \(m(t) = 1 - X(t) = \frac{d(t)^3}{d_0^3}\). Since the final dissolution time \(T=\frac{d_0}{2R_{\text{diss}}\Omega}\), this can also be written as
@@ -74,24 +76,41 @@ By rearranging for \(A^*\), this allows for the calculation of the required annu
 \end{equation}
 
 \subsubsection{Calculation of LCOC}
-The levelized cost of carbon including transport (LCOCR) is then calculated as the total cost of the project over its $T = 100$ year lifetime divided by the total amount of CO2 removed in the same timeframe:
+The levelized cost of carbon including transport (LCOCR) is then calculated as the total cost of the project over its lifetime ($T$) in years divided by the total amount of CO$_2$ removed:
 \begin{equation}
   \text{LCOCR} = \frac{C_r \sum_{t=1}^{T} A_t}{\eta \sum_{t=1}^{T} D_t} = \frac{C_r T A^*}{\eta \sum_{t=1}^{T} D_t} = \frac{C_rT}{\eta\left(T-\frac{1-(1-f_{\text{eff}})^T}{f_{\text{eff}}}\right)}
 \end{equation}
-where \(C_r\) is the total cost of one tonne of rock material, defined as the sum of CapEx, fixed cost and variable cost per tonne, and \(\eta\) is the amount of CO2 absorbed by one tonne of rock until complete dissolution (\(\eta = 0.76\) for olivine rock of 60\% purity).
+where \(C_r\) is the total cost of one tonne of rock material, defined as the sum of CapEx, fixed cost and variable cost per tonne, and \(\eta\) is the amount of CO$_2$ absorbed by one tonne of rock until complete dissolution.
 Note that the total amount of rock dissolved is not equal to the total amount of rock applied, since the amount dissolved per year is lower during the "ramp-up" phase until the steady state is reached, and the steady state inventory of \(S^*\) remains on the field after the end of the project timeline.\vspace{2mm}
 
-To calculate the levelized cost of carbon considering transport and leakage \(\text{LCOCR}^+\), the leakage rate \(\alpha\), which is calculated from the amount of CO2 emitted during mining, transport, and application, is applied to the LCOCR:
+To calculate the levelized cost of carbon considering transport and leakage (\(\text{LCOCR}^+\)), the leakage rate \(\alpha\), which is calculated from the amount of CO$_2$ emitted during mining, transport, and application, is applied to the LCOCR:
 \begin{equation}
   \text{LCOCR}^+ = \frac{\text{LCOCR}}{1-\alpha}
 \end{equation}
 
+\subsection{Global Marginal Abatement Cost Curve}
+To calculate a global marginal abatement cost curve (MACC), the primary required input variables are the available land area, the average soil temperatures and pH values, as well as the costs for mining equipment, labour and energy, by country. The rock material required is generally considered to be abundantly available  and is not assumed to be a constraint \parencite{hangx_coastal_2009, strefler_potential_2018}.\vspace{2mm}
+
+The available land area was calculated based on data for global agricultural land from FAOSTAT \parencite{fao_faostat_2025}. Agricultural land is relatively easy to treat using agricultural equipment, compared to forest areas, which require application by plane. The limitation to agricultural land should therefore serve as a conservative estimate of the hypothetically land area available for ERW.\vspace{2mm}
+
+In the next step, data on the global average soil temperature and pH values by country were collected from \textcite{lembrechts_global_2022} and \textcite{hengl_soilgrids250m_2017}, respectively, and processed using the open-source QGIS application. The model described above was then applied to calculate the weathering speed and effective dissolution rate ($f_\text{eff}$) for each country. The desired steady-state inventory ($S^*$) of 30 tonnes per hectare, based on experiments of the \textcite{carbon_drawdown_initiative_how_2022}, was then divided by the effective dissolution rate to calculate the annual application and dissolution rates.\vspace{2mm}
+
+A project lifetime of 100 years was assumed, and using the CO$_2$ uptake ratio of $\eta = 0.76$ \parencite{breunig_life_2024} and grain size $d_0 = 10$ micron, the annual CDR potential by country was calculated from the available agricultural area in hectares and the dissolution rate per hectare. The cost per tonne of rock applied was calculated based on the CapEx required for a representative mining operation, the modeled transport, labor and energy required for processing and application, as well as country level data on energy costs and wages. Finally, formulas (3.13) and (3.14) were  applied to calculate the LCOCR and LCOCR$^+$. This method yielded country-level data on the cost and theoretical potential of ERW.
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/ewr_macc_chart.png}
+    \caption{Global ERW marginal abatement cost curves}
+    \label{fig:erw_macc_chart}
+  \end{center}
+\end{figure}
+
+The results show that there is a significant, gigaton-scale CDR potential at a cost of less than 40 US\$, with the whole potential of around nine gigatonnes still being available at below 70 US\$. Theoretically, therefore, ERW alone would be able to cover nearly all of the required CDR until 2050. However, as discussed in chapter 2.6, it should be noted that the real potential of ERW will probably be constrained by the social and political acceptance of large-scale mining operations, and the bureaucratic and logistical hurdles associated with them. These limitations are not considered in the present MACC's.
+
 \subsection{Case Study: Enhanced rock weathering in the USA}
 The United States can serve as a useful case study for enhanced rock weathering due to its large land area and high technological and economic development.\vspace{2mm}
 
-The primary input variables for the present enhanced weathering model are energy and labour costs, the environmental conditions (i.e. the average pH value and temperature of the soil), the chosen grain size of the rock dust (\(d_0\)), as well as the desired steady-state inventory per hectare (\(S^*\)). For the full overview of input variables for the US-base example case, see tables 3.1 and 3.2.\vspace{2mm}
+The primary input variables for the present enhanced weathering model are energy and labour costs, the environmental conditions (i.e. the average pH value and temperature of the soil), the chosen grain size of the rock dust (\(d_0\)), as well as the desired steady-state inventory per hectare (\(S^*\)). For this case study, all of these variables were considered on a national average level. For the full overview of input variables for the US-base example case, see table 3.1.\vspace{2mm}
 
-The data on global average soil temperatures and pH values was collected from \textcite{lembrechts_global_2022} and \textcite{hengl_soilgrids250m_2017}, respectively, and processed using the open-source QGIS application.\hfill
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\linewidth]{figures/EW_usa_case.png}
@@ -100,28 +119,29 @@ The data on global average soil temperatures and pH values was collected from \t
 \end{figure}
 \begin{wraptable}{r}{9.5cm}
 \vspace*{-\baselineskip}
-  \begin{tabular}{lll}
-    \textbf{General economic variables}                          &                                   & \multicolumn{1}{r}{}        \\ \hline
-    \multicolumn{1}{|l|}{Capital recovery factor}      & \multicolumn{1}{l|}{\%}           & \multicolumn{1}{r|}{9.44} \\ \hline
-    \multicolumn{1}{|l|}{Electricity price}            & \multicolumn{1}{l|}{\$ / MWh}     & \multicolumn{1}{r|}{44.00}  \\ \hline
-    \multicolumn{1}{|l|}{Electricity carbon intensity} & \multicolumn{1}{l|}{g / kWh}      & \multicolumn{1}{r|}{400}    \\ \hline
-    \multicolumn{1}{|l|}{Diesel price}                 & \multicolumn{1}{l|}{\$ / L}             & \multicolumn{1}{r|}{0.9}    \\ \hline
-    \multicolumn{1}{|l|}{Diesel carbon intensity}      & \multicolumn{1}{l|}{g / km}       & \multicolumn{1}{r|}{250}    \\ \hline
-    \multicolumn{1}{|l|}{Diesel carbon intensity}      & \multicolumn{1}{l|}{kg / l}       & \multicolumn{1}{r|}{2.7}    \\ \hline
-    \multicolumn{1}{|l|}{Avg. cost per worker-hour}    & \multicolumn{1}{l|}{\$ / hour}    & \multicolumn{1}{r|}{70.05}  \\ \hline
-    \multicolumn{1}{|l|}{Truckload tonnage}            & \multicolumn{1}{l|}{t}            & \multicolumn{1}{r|}{40.00}  \\ \hline
-    \multicolumn{1}{|l|}{Truck fuel consumption}       & \multicolumn{1}{l|}{l / km}       & \multicolumn{1}{r|}{0.40}   \\ \hline
-    \multicolumn{1}{|l|}{Truck avg. speed}             & \multicolumn{1}{l|}{km / hr}      & \multicolumn{1}{r|}{80}     \\ \hline
-    \multicolumn{1}{|l|}{Rail energy consumption}      & \multicolumn{1}{l|}{kWh / tkm} & \multicolumn{1}{r|}{0.1836} \\ \hline
-    \multicolumn{1}{|l|}{Tractor fuel consumption}     & \multicolumn{1}{l|}{l / h}        & \multicolumn{1}{r|}{16}     \\ \hline
-        &                                &                                  \\
-    \textbf{EWR-specific variables}                       &                                   &                             \\ \hline
-    \multicolumn{1}{|l|}{Desired  \(S^*\)}           & \multicolumn{1}{l|}{t / ha}       & \multicolumn{1}{r|}{30}     \\ \hline
-    \multicolumn{1}{|l|}{Particle size \(d_0\)}                & \multicolumn{1}{l|}{micron}       & \multicolumn{1}{r|}{10}     \\ \hline
-    \multicolumn{1}{|l|}{Avg. soil pH value}                & \multicolumn{1}{l|}{}       & \multicolumn{1}{r|}{6.229}     \\ \hline
-    \multicolumn{1}{|l|}{Avg. soil temperature}                & \multicolumn{1}{l|}{°C}       & \multicolumn{1}{r|}{8.961}     \\ \hline
-  \end{tabular}
+  \begin{tabular}{llr}
+\textbf{General economic variables} &           &                      \\ \hline
+Capital recovery factor             & \%        & 9.44                 \\
+Electricity price                   & \$ / MWh  & 44.00                \\
+Electricity carbon intensity        & g / kWh   & 400                  \\
+Diesel price                        & \$ / L    & 0.9                  \\
+Diesel carbon intensity             & g / km    & 250                  \\
+Diesel carbon intensity             & kg / l    & 2.7                  \\
+Avg. cost per worker-hour           & \$ / hour & 70.05                \\
+Truckload tonnage                   & t         & 40.00                \\
+Truck fuel consumption              & l / km    & 0.40                 \\
+Truck avg. speed                    & km / hr   & 80                   \\
+Rail energy consumption             & kWh / tkm & 0.1836               \\
+Tractor fuel consumption            & l / h     & 16                   \\ \hline
+                                    &           & \multicolumn{1}{l}{} \\
+\textbf{EWR-specific variables}     &           & \multicolumn{1}{l}{} \\ \hline
+Desired \(S^*\)                     & t / ha    & 30                   \\
+Particle size \(d_0\)               & micron    & 10                   \\
+Avg. soil pH value                  &           & 6.229                \\
+Avg. soil temperature               & °C        & 8.961                \\ \hline
+\end{tabular}
   \captionof{table}{ERW input variables, US-based case}\label{us-case-table}
+  \vspace*{-\baselineskip}
 \end{wraptable}
 Based on these inputs, and using formulas (3.1) and (3.2), the average dissolution rate for the United States was calculated to be \(R_\text{diss, USA} = 9.83494 * 10^{-11} \frac{mol}{sec}\). This results in a final dissolution time of \(T_\text{USA} = 37.47\) years, with the average lifetime of \(L_\text{USA} = 9.37\) years, and the effective annual dissolution rate \(f_\text{eff, USA} = 10.12\%\). This rate means that an annual application of \(A^* = \frac{30}{0.1012} = 3.04 \frac{tonnes}{ha}\) is required to eventually reach a steady state inventory of \(S^* = 30 \frac{tonnes}{ha}\) after approximately 90 years, with 95\% of the progress being achieved within the first 35 years (see Figure 3.2). In the steady state, the annual dissolution (\(D_t\)) will equal the application (\(A^*\)), and the carbon dioxide removed annually in this example case can be calculated as \(CDR(t) = \eta D_t = 0.76\frac{t \ CO^2}{t \ OL}*3.04\frac{t \ OL}{ha}\ = 2.3104 \frac{t \ CO^2}{ha}\).\vspace{2mm}
 
