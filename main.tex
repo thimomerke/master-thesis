@@ -1,9 +1,9 @@
-\documentclass[11pt]{report}
+\documentclass[12pt]{report}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{setspace}
 \usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
 \usepackage{lipsum}
-\usepackage[style=apa,backend=biber]{biblatex}
+\usepackage[style=apa,backend=biber,sorting=nyt,useprefix=false]{biblatex}
 \usepackage{sectsty}
 \usepackage{nicematrix}
 \usepackage{adjustbox}
@@ -16,7 +16,33 @@
 \usepackage{chngcntr}
 \usepackage{newclude}
 \usepackage{booktabs}
+\usepackage{nomencl}
+\usepackage{stackengine}
+\usepackage{verbatim}
 
+% Remove in final version
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+%\fancyhead[L]{NAME}
+\fancyhead[C]{\color{red}DRAFT}
+
+\newcommand{\detailtexcount}[1]{%
+  \immediate\write18{texcount -merge -sum -q #1.tex output.bbl > #1.wcdetail }%
+  \verbatiminput{#1.wcdetail}%
+}
+
+\newcommand{\quickwordcount}[1]{%
+  \immediate\write18{texcount -1 -sum -merge -q #1.tex output.bbl > #1-words.sum }%
+  \input{#1-words.sum} words%
+}
+
+\newcommand{\quickcharcount}[1]{%
+  \immediate\write18{texcount -1 -sum -merge -char -q #1.tex output.bbl > #1-chars.sum }%
+  \input{#1-chars.sum} characters (not including spaces)%
+}
+
+\newcommand{\barbelow}[1]{\stackunder[1.2pt]{$#1$}{\rule{.8ex}{.075ex}}}
 
 \title{Strategic Carbon Removal: A Dynamic Portfolio Model of Durable and Cost-Effective CDR Pathways}
 \author{Thimo Merke}
@@ -50,6 +76,11 @@
 
 \addbibresource{references.bib}
 
+\setlength{\nomlabelwidth}{2cm} 
+\makenomenclature
+\renewcommand{\nomname}{List of Abbreviations}
+%\renewcommand{\nompreamble}{The next list describes several symbols that will be later used within the body of the document}
+
 \begin{document}
 
 \renewcommand{\thepage}{\roman{page}}
@@ -63,10 +94,24 @@
 \tableofcontents
 \listoffigures
 \listoftables
-\newpage
 
-\makenomenclature
-%\input{acronyms.tex}
+\nomenclature{A/R}{Afforestation and Reforestation}
+\nomenclature{BECCS}{Bioenergy with Carbon Capture and Storage}
+\nomenclature{BiCRS}{Biomass Carbon Removal and Storage}
+\nomenclature{CCS}{Carbon Capture and Storage}
+\nomenclature{CDR}{Carbon Dioxide Removal}
+\nomenclature{CRC}{Carbon Removal Credit}
+\nomenclature{DAC}{Direct Air Capture}
+\nomenclature{ERW}{Enhanced Rock Weathering}
+\nomenclature{LCOC}{Levelized Cost of Carbon Captured}
+\nomenclature{L-DAC}{Liquid Direct Air Capture}
+\nomenclature{MACC}{Marginal Abatement Cost Curve}
+\nomenclature{MRV}{Measurement, Reporting, and Verification}
+\nomenclature{NET}{Negative Emission Technology}
+\nomenclature{PPP}{Purchasing Power Parity}
+\nomenclature{S-DAC}{Solid Direct Air Capture}
+\nomenclature{TRL}{Technological Readiness Level}
+\nomenclature{VCM}{Voluntary Carbon Market}
 \printnomenclature
 \newpage
 
@@ -82,5 +127,8 @@
 
 \printbibliography
 
-%\input{declaration.tex}
+\input{declaration.tex}
+
+\newpage
+\detailtexcount{main}
 \end{document}
