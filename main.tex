@@ -19,13 +19,7 @@
 \usepackage{nomencl}
 \usepackage{stackengine}
 \usepackage{verbatim}
-
-% Remove in final version
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-%\fancyhead[L]{NAME}
-\fancyhead[C]{\color{red}DRAFT}
+\usepackage{amsmath}
 
 \newcommand{\detailtexcount}[1]{%
   \immediate\write18{texcount -merge -sum -q #1.tex output.bbl > #1.wcdetail }%
