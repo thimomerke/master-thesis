@@ -15,22 +15,6 @@ For the input data, country-level data on the availability and, if relevant, cos
 \include*{ewr}
 \include*{dac}
 
-\section{Overview of modeling results}
-As a summary answer to research question one, Table 3.5 provides an overview of the CDR potential and LCOC ranges of the four approaches modeled in this chapter. Cost and CDR potential generally fall within or close to the ranges of the previous literature (see table 2.2), with the exception of ERW, which was found to be available at a minimum cost about 50\% below the literature estimates.
-\begin{table}[h]
-%\centering
-\small
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{lrrr}
-Technology     & \begin{tabular}[c]{@{}l@{}}Lowest LCOC\\ (USD/t CO$_2$)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Highest LCOC\\ (USD/t CO$_2$)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Potential\\ (Gt CO$_2$ / yr)\end{tabular} \\ \hline
-\textbf{A/R}   & 3                                                                    & 88                                                                    & 2,431                                                                \\
-\textbf{BiCRS} & 116                                                                  & 319                                                                   & 4,793                                                                \\
-\textbf{ERW}   &                                                                      &                                                                       & 8,630                                                                \\
-\textbf{DAC}   & 328                                                                  & 527                                                                   & -                                                                    \\ \hline
-\end{tabular}
-\caption{Modeled cost and potential of selected NET}
-\end{table}
-
 \mychapter{4}{Development of optimal global CDR portfolios}
 To construct the ideal portfolios, two types of optimization approaches were considered. First, a simple static portfolio was created, which is based on a one-off removal of a given quantity of carbon dioxide on a given timeline, such as the removal of ten gigatonnes of CO$_2$ over five years. In the second step, this simple static approach was evolved into a dynamic portfolio approach, which considers a changing (increasing) annual requirement of CDR in order to reach certain targets on a certain timeline, such as the annual removal of 10 gigatonnes of CO$_2$ by the year 2050.\vspace{2mm}
 
@@ -57,8 +41,34 @@ These results illustrate the limitations of a simple cost-based approach to sele
 
 \subsection{Dynamic Portfolio}
 
-The dynamic portfolio shows staggering numbers, both, in regard to the total amount of carbon removed until the year 2100, and in regard to the total cost necessary to achieve this target. For comparison, the 855 Gt of CO$_2$ requiring removal over the next 75 years are approximately equivalent to the entire historic emission of humanity until 1990, while the sum of emissions since 1990 amounts to about 1000 Gt \parencite{ritchie_co_2020}.\vspace{2mm}
+The dynamic portfolio shows staggering numbers, both, in regard to the total amount of carbon removed until the year 2100, and in regard to the total investment and operating expenditures necessary to achieve this target. For comparison, the 855 Gt of CO$_2$ requiring removal over the next 75 years are approximately equivalent to the entire historic emission of humanity until 1990, and slightly below the sum of emissions since 1990, which amounts to about 1000 Gt \parencite{ritchie_co_2020}.\vspace{2mm}
 
-The development of the LCOC of the various technologies also provide intersting insights. The nearly flat cost of ERW is caused largely by the modeling constraints, which limit the actual deployment of the technology to a point significantly below the hypothetical potential shown by the MACC, which was developed in section 3.3. The increasing LCOC of A/R, and to a more significant degree, of BECCS, are explained by the fact that the optimizer uses the cheapest potential first, e.g. the tropic rainforests with very fast growth and high biomass accumulation, or the cheaply available manure for BECCS. Once these options are are exhausted, it moves to add the more expensive options from less economical areas or input materials. By the mid-2040s, both, A/R and BECCS, will reach their maximum annual potential. This means that while they will keep contributing significant amounts of CDR, their expansion will be stopped by natural limitations in land and waste biomass availability. Finally, the results show that A/R removals start to decline from the mid-2060s, when all available land is used up and the maturing forests start to absorb less and less CO$_2$ from the atmosphere.\vspace{2mm}
+The development of the LCOC of the various technologies also provides interesting insights. The nearly flat cost of ERW is caused largely by the modeling constraints, which limit the actual deployment of the technology to a point significantly below the hypothetical potential shown by the MACC, which was developed in section 3.3. The increasing LCOC of A/R, and to a more significant degree, of BECCS, are explained by the fact that the optimizer uses the cheapest potential first, e.g. the tropic rainforests with very fast growth and high biomass accumulation, or the cheaply available manure for BECCS. Once these options are are exhausted, it moves to add the more expensive options from less economical areas or input materials. By the mid-2040s, both, A/R and BECCS, will reach their maximum annual potential. This means that while they will keep contributing significant amounts of CDR, their expansion will be stopped by natural limitations in land and waste biomass availability. Finally, the results show that A/R removals start to decline from the mid-2060s, when all available land is used up and the maturing forests start to absorb less and less CO$_2$ from the atmosphere.\vspace{2mm}
 
 Looking at DAC, the fact that its LCOC seems to only decreases slightly despite the sharp drop in the capital expenditures per unit of capacity can be traced to the nature of the learning effects: The amount of DAC capacity constructed under the early, high-cost conditions makes up only a small share of the total DAC capacity. By the time the 100th Mt of capacity is deployed, the cost will already have fallen to below 1000 USD, and by the first Gt, it will be below 500 USD. Additionally, DAC construction begins earlier than the LCOC curve, which only starts from the point where DAC commences operations. Investing in such plants, only for them to sit idle for nearly their entire lifetime, seems counterintuitive. However, it makes sense considering that operating them is still more expensive than using the other NET as long as these can fulfill the annual CDR target. The initial DAC investment therefore occurs largely to build up capacity to be ready when it is required, while "buying down" the average capital expenditures per tonne of capacity. Therefore, these results should be regarded as an encouragement to begin DAC deployment early in order to drive down its costs by the time it is required in significant amounts from the mid-2040s onwards.\vspace{2mm}
+
+\subsection{Interpreting the techno-economic potential and cost}
+Returning to research question one, Table 4.2 provides an overview of the CDR potential and LCOC ranges of the four approaches modeled in this chapter. The models find that afforestation is the cheapest NET overall, with most of the potential being available at below 10 USD / t CO2. However, this potential is limited by the land availability and biomass growth cycle. It therefore dominates in the short-term, but eventually saturates and needs to be replaced by engineered removal options from the mid-2060s onwards.\vspace{2mm}
+
+Enhanced weathering also shows enormous potential of nearly 10 Gt CO2 / yr at costs of no more than 70 USD / t CO2, which is significantly cheaper than the remaining options. However, it is severely limited by the logistical constraints of building what is effectively a large-scale, global mining operation similar in size to the present-day coal industry. Therefore, despite its potential, ERW only makes up about 5\% of the cumulative removals under realistic assumptions, despite being cost-competitive.\vspace{2mm}
+
+The BiCRS approach, represented here by the BECCS model, is a critical in filling the middle period. With a potential of nearly 5 Gt CO2 / yr, it acts as a "bridge" that buys time for DAC to scale up sufficiently. Being available from about 120 dollars, it sits between A/R and ERW on the cheap end and DAC on the expensive side. Also, compared to other approaches, it is the only one with significant co-revenues, in this case from electricity generation, which significantly improve its economics.\vspace{2mm}
+
+Finally, DAC is the most expensive of all options, but plays a critical role in the later part of the century, since it is the only option that has a technically unlimited potential for CDR, being limited virtually only by the energy available.\vspace{2mm}
+
+Compared to the previous literature, as reviewed in section 2, the cost and CDR potential modeled generally fall within or close to the same ranges (see table 2.2), with the exception of ERW, which was found to be available at a minimum cost about 50\% below the literature estimates.
+\begin{table}[h]
+%\centering
+\small
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrr}
+Technology     & \begin{tabular}[c]{@{}l@{}}Lowest LCOC\\ (USD/t CO$_2$)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Highest LCOC\\ (USD/t CO$_2$)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Potential\\ (Gt CO$_2$ / yr)\end{tabular} \\ \hline
+\textbf{A/R}   & 3                                                                    & 88                                                                    & 2,431                                                                \\
+\textbf{BiCRS} & 116                                                                  & 319                                                                   & 4,793                                                                \\
+\textbf{ERW}   &  26                                                                    & 67                                                                      & 8,630                                                                \\
+\textbf{DAC}   & 328                                                                  & 527                                                                   & -                                                                    \\ \hline
+\end{tabular}
+\caption{Modeled cost and potential of selected NET}
+\end{table}
+
+\subsection{Interpreting the techno-economic potential and cost}
