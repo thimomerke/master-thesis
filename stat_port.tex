@@ -1,9 +1,9 @@
 \section{Optimal Static Portfolio}
-The optimal static portfolios were developed based on the idea that a carbon removal operation is set up with the goal of removing a certain, pre-defined amount of CO$_2$ from the atmosphere over a certain time-frame, and shutting down afterwards. In the first optimization model, a global operation to remove a total of 5 Gt of CO$_2$ was considered, with given time frames of five, 10, 20 and 50 years. In the second model, an additional constrain was introduced to enforce an equal annual spread of the removals, such that in every year, 1000 (500, 250, 100) Mt of CO$_2$ have to be removed.\vspace{2mm}
+The optimal static portfolios were developed based on the idea that a carbon removal operation is set up with the goal of removing a certain, pre-defined amount of CO$_2$ from the atmosphere over a certain time-frame, and shutting down afterwards. In the first optimization model, a global operation to remove a total of 5 Gt of CO$_2$ was considered, with given time frames of five, 10, 20 and 50 years. In the second model, an additional constrain was introduced to enforce an equal annual spread of the removals, such that in every year, 100 (500, 250, 1000) Mt of CO$_2$ had to be removed.\vspace{2mm}
 
 \subsection{Model Formulation}
 \subsubsection{Objective function}
-For a horizon of length $H$, the time period $ T_h =  \{0,1,...,H-1\} $ is defined. The model determines the least-cost portfolio of afforestation, BECCS, enhanced weathering, and direct air capture that satisfies the cumulative removal target of $R$ MtCO$_2$ total.\vspace{2mm}
+For a horizon of length $H$, the time period $ T_h =  \{0,1,...,H-1\} $ is defined. The model determines the least-cost portfolio of afforestation, BECCS, enhanced weathering, and direct air capture that satisfies the cumulative removal target of $R$ MtCO$_2$.\vspace{2mm}
 
 The optimization problem can be written as
 \begin{equation}
@@ -11,8 +11,8 @@ The optimization problem can be written as
 \min \sum_{t\in T} \Big[
 & \underbrace{\sum_{c\in\mathcal{C}^{1}} k^1_c x_{t,c}^1}_{\text{A/R}} + \underbrace{F^2(q_t^2)}_{\text{BECCS}} + \underbrace{F^3(q_t^3)}_{\text{ERW}} \\[4pt]
 & + \underbrace{
-    q_t^4 k^{\text{4,var}} 
-    + X^4 k^{\text{4,fixed}} 
+    q_t^4 k^{\text{4,v}} 
+    + X^4 k^{\text{4,f}} 
     + x_t^4 I_t^4
 }_{\text{DAC}}
 \Big]
@@ -36,8 +36,8 @@ Q_t = \frac{R}{T_h} \qquad \forall t \in T, h \in H.
 \end{equation}
 where $Q_t = q_t^1+q_t^2+q_t^3+q_t^4$.
 
-\subsubsection{Afforestation and reforestation}
-For A/R, let $\mathcal{C^1}$ denote the set of countries included in the dataset. Furthermore, for each country $c\in \mathcal{C^1}$, let $A_c$ be the total available are for reforestation (in ha), $\rho_c^1$ the annual removal potential (in MtCO$_2$/ha/yr), $g_c$ the number of years during which a hectare removes CO$^2$, $k_c^1$ the cost of afforestation per hectare, and $x_{t,c}^1$ the area reforested in year $t$.\vspace{2mm}
+\subsubsection{Afforestation and Reforestation}
+For A/R, let $\mathcal{C}^1$ denote the set of countries included in the dataset. Furthermore, for each country $c\in \mathcal{C}^1$, let $A_c$ be the total available are for reforestation (in ha), $\rho_c^1$ the annual removal potential (in MtCO$_2$ ha$^{-1}$ yr$^{-1}$), $g_c$ the number of years during which a hectare removes CO$^2$, $k_c^1$ the cost of afforestation per hectare, and $x_{t,c}^1$ the area reforested in year $t$.\vspace{2mm}
 
 The annual cost is then defined as
 \begin{equation}
@@ -73,10 +73,10 @@ X_{t,c}^1 =
     \qquad \forall c \in \mathcal{C}
 \end{equation}
 
-is the sum of all the afforested areas, less those lost to reversal. Thus, the annual afforestation cannot exceed $\phi^1$ of the available land area, and the cumulative afforested area is limited to the available land. Carbon removal begins in the year after planting and lasts for $g_c$ years, which is the growth cycle in each country defined by the climatic conditions.
+is the sum of all the afforested areas, less those lost to reversal. Thus, the annual afforestation cannot exceed $\phi^1$ of the available land area, and the cumulative afforested area is limited to the available land. Carbon removal begins in the year after planting and lasts for $g_c$ years, which is the growth cycle in each country defined by its climatic conditions.
 
-\subsubsection{BECCS}
-The BECCS model uses a piecewise-linear cumulative cost curve built from the marginal cost curve modeled in section three. Let $F^2(\cdot)$ denote this cumulative cost function. Then, for each $t \in T$, the cost of BECCS is defined as
+\subsubsection{Bioenergy with Carbon Capture and Storage}
+The BECCS model uses a piecewise-linear cumulative cost curve built from the marginal abatement cost curve modeled in section three. Let $F^2(\cdot)$ denote this cumulative cost function. Then, for each $t \in T$, the cost of BECCS is defined as
 \begin{equation} 
 K^2_t = F^2(q_t^2),
 \end{equation}
@@ -86,7 +86,7 @@ K^2_t = F^2(q_t^2),
 where $\bar{q}_t^2$ is the maximum annual potential implied by the marginal abatement cost curve.
 
 \subsubsection{Enhanced Weathering}
-Similar to the BECCS model, the ERW model also uses a piecewise-linear cumulative cost curve built from the marginal cost curve. Let $F^3(\cdot)$ denote  cumulative ERW cost and $G^3(\cdot)$ cumulative rock demand as functions of the annual removal quantity. Then, for each $t \in T$,
+Similar to the BECCS model, the ERW model also uses a piecewise-linear cumulative cost curve built from the marginal abatement cost curve. Let $F^3(\cdot)$ denote  cumulative ERW cost and $G^3(\cdot)$ cumulative rock demand as functions of the annual removal quantity. Then, for each $t \in T$,
 \begin{equation} 
 K^3_t = F^3(q_t^3),
 \end{equation}
@@ -95,24 +95,24 @@ m_t = G^3(q_t^3).
 \end{equation}
 Further, the annual rock use is constrained by
 \begin{equation} 
-m_t \leq \phi_tM \qquad \forall t \in T
+m_t \leq \rho_t^3M \qquad \forall t \in T
 \end{equation}
-where $M$ Mt/yr is the total global mining capacity and $\phi_t$ limits the mining conducted for ERW to an annually increasing fraction of that global capacity. In addition, the annual rock use increase is limited by
+where $M$ Mt/yr is the total global mining capacity and $\rho_t^3$ limits the mining conducted for ERW to an annually increasing fraction of that global capacity. In addition, the annual rock use increase is limited by
 \begin{equation} 
-m_t \leq (1+\rho^3)m_{t-1}   \qquad \forall t \in T\backslash\{ 0 \}
+m_t \leq (1+\phi^3)m_{t-1}   \qquad \forall t \in T\backslash\{ 0 \}
 \end{equation}
 which limits the annual increase of rock consumption relative to the previous year, starting from the second year.
 
 \subsubsection{Direct Air Capture}
-In the static optimization model, only the DAC model includes both, the annual investment and operating decisions, as separate decision variables. Let $x_t^4$ be the DAC capacity built in year $t$, $X_t^4$ the available installed capacity, and $q_t^4$ the actual operated DAC removal. The capacity has a fixed lifetime of $L^4 = 20$ years after construction, so that
+In the static optimization model, only the DAC model includes both, the annual investment and operating decisions, as separate decision variables. Let $x_t^4$ be the DAC capacity built in year $t$, $X_t^4$ the available installed capacity, and $q_t^4$ the actual operated DAC capacity. The capacity has a fixed lifetime of $L^4$ after construction, so that
 \begin{equation}
 X_t^4 =
     \begin{cases}
       x_0^4, & t = 0,\\
-      \sum^{t-1}_{\tau=\text{max}(0,t-L^4)} x_t^4 & t > 0,
+      \sum^{t-1}_{\tau=\text{max}(0,t-L^4)} x_\tau^4 & t > 0,
     \end{cases} 
 \end{equation}
-with the annual capacity construction limit (in MtCO$_2$/yr) of
+with the annual capacity construction limit (in MtCO$_2$ yr$^{-1}$) of
 \begin{equation}
     x_t^4 \leq \phi^4X_{t-1}^4   \qquad \forall t \in T\backslash\{ 0 \}
 \end{equation}
@@ -127,41 +127,28 @@ To represent the learning effects of DAC capacity expansion, the unit investment
 \begin{equation}
 I_t^4 = I_0^4(X_{t-1}^4+1)^{log_2(1-\lambda)}   \qquad \forall t \in T \backslash\{ 0 \}
 \end{equation}
-where $\lambda$ is the learning rate of 10\%.\vspace{2mm}
+where $\lambda$ is the learning rate.\vspace{2mm}
 
-The operating cost of DAC is defined by the linear term
+The variable cost of DAC is defined by the linear term
 \begin{equation}
-k^\text{4,var} = u_ek_e+u_hk_h+u_wk_w + k^\text{4,T\&S}
+k^\text{4,var} = u_ek_e+u_hk_h+u_wk_w + k^\text{4,ts}
 \end{equation}
-where $u_e$, $u_h$, and $u_w$ are the units of energy, heat, and water consumed during the removal of one tonne of CO$_2$, while $k_e$, $k_h$, and $k_w$ are the costs per unit, and $k^\text{4,T\&S}$ represents the transport and storage cost per tonne. The fixed cost per unit of installed capacity is defined as $k^\text{4,fixed}$.\vspace{2mm}
+where $u_e$, $u_h$, and $u_w$ are the units of energy, heat, and water consumed during the removal of one tonne of CO$_2$, while $k_e$, $k_h$, and $k_w$ are the costs per unit. The fixed cost per unit of installed capacity is defined as $k^\text{4,f}$, and the transport and storage cost per tonne is denoted as $k^\text{4,ts}$.\vspace{2mm}
 
 Finally, for each $t \in T$, the annual cost of DAC is defined as
 \begin{equation}
-K^4_t = q_t^4k^\text{4,var}+X^4k^\text{4,fixed} + x_t^4I_t^4.
+K^4_t = q_t^4(k^\text{4,v}+k^\text{4,ts})+X^4k^\text{4,f} + x_t^4I_t^4.
 \end{equation}
 
 \subsection{Model Implementation}
 For the two static optimization models considered in this thesis, horizon lengths ($H$) of 5, 10, 20 and 50 years are considered, with the removal target ($R$) being a constant total of 5000 MtCO$^2$.\vspace{2mm}
 
-For the individual technologies, the following variables are defined: The annual reversal rate of A/R ($\alpha^1)$ is set to 1\%, and the annual planting limit relative to the total available area ($\phi^1$) is set to 10\%. For enhanced weathering, the global mining capacity ($M$) is set to 9000 Mt/yr, using the global coal mining capacity as a reference number. The ERW mining constraint is then defined as  $\rho_t^3= 0.001 + 0.099\frac{t}{50}$, which allows the available rock capacity to increase by 0.2\% annually, starting from 0.1\% and eventually reaching a limit of 10\% after 50 years. Additionally, the annual increase limit ($\phi^3$) is set to 5\% in order to represent the fact that the allowable ERW capacity cannot be added all at once, but must be constructed over a period of time.\vspace{2mm}
+For the individual technologies, the following variables are defined: The annual reversal rate of A/R ($\alpha^1)$ is set to 1\%, and the annual planting limit relative to the total available area ($\phi^1$) is set to 10\%. For enhanced weathering, the global mining capacity ($M$) is set to 9000 Mt yr$^{-1}$, using the global coal mining capacity as a reference number. The ERW mining constraint is then defined as  $\rho_t^3= 0.001 + 0.099\frac{t}{50}$, which allows the available rock capacity to increase by 0.2\% annually, starting from 0.1\% and eventually reaching a limit of 10\% after 50 years. Additionally, the annual increase limit ($\phi^3$) is set to 5\% in order to represent the fact that the allowable ERW capacity cannot be added all at once, but must be constructed over a period of time.\vspace{2mm}
 
-For direct air capture, the lifetime ($L^4$) of capacity is set to 20 years, and the annual capacity construction limit ($\phi^4$) is set to 10\% in order to limit relative expansion compared to the previous period, starting with $x_0^4 = 50$ MtCO$^_2$ / yr. Additionally, the base CapEx per unit of capacity ($I^4_0$) is assumed to be 1800 USD/tCO$_2$/yr, and the learning rate ($\lambda$) is set to 10\%, which is the middle of the suggested range of 5 to 15\%. Finally, in the present implementation, the CapEx term $x_t^4I_t^4$ is represented using a McCormick-envelope relaxation, as described above, resulting in the following constraints for all $t \in T$:
-\begin{equation}
-x_t^4I_t^4 \geq \barbelow{x}^4I_t^4 + x_t^4\barbelow{I}^4 - \barbelow{x}^4\barbelow{I}^4,
-\end{equation}
-\begin{equation}
-x_t^4k_t^4 \geq \bar{x}^4I_t^4 + x_t^4\bar{I}^4 - \bar{x}^4\bar{I}^4,
-\end{equation}
-\begin{equation}
-x_t^4I_t^4 \leq \bar{x}^4I_t^4 + x_t^4\barbelow{I}^4 - \bar{x}^4\barbelow{I}^4,
-\end{equation}
-\begin{equation}
-x_t^4I_t^4 \leq \barbelow{x}^4I_t^4 + x_t^4\bar{I}^4 - \barbelow{x}^4\bar{I}^4,
-\end{equation}
-where the lower and upper bounds are denoted by $(\barbelow{x}^4, \bar{x}^4)$ and $(\barbelow{I}^4, \bar{I}^4)$, respectively. This yields a linear relaxation of the CapEx term around the bilinear identity. In more simple terms, the DAC CapEx term is a product of two decision variables, the amount of capacity constructed in a given year ($x_t^4$), and the unit investment cost $I_t^4$, which decreases based on the learning from previous years' capacity investments. The resulting bilinearity would turn the optimization problem into a non-convex, non-linear program. The McCormack relaxation is used to avoid this and keep the program computationally feasible in reasonable time, while still sufficiently capturing the interaction between scale-up and learning.
+For direct air capture, the lifetime ($L^4$) of capacity is set to 20 years, and the annual capacity construction limit ($\phi^4$) is set to 10\% in order to limit relative expansion compared to the previous period, starting with $x_0^4 = 50$ MtCO$^_2$ yr$^{-1}$. Additionally, the base CapEx per unit of capacity ($I^4_0$) is assumed to be 1800 USD tCO$_2^{-1}$ yr$^{-1}$, and the learning rate ($\lambda$) is set to 10\%, which is the middle of the suggested range of 5 to 15\%. Finally, in the present implementation, the CapEx term $x_t^4I_t^4$ is represented using a piecewise-constant, segmented learning curve, where one segment is active in any year $t$ based on the previous year's active capacity $X_t^4$. This is necessary since the DAC CapEx term is a product of two decision variables, the amount of capacity constructed in a given year ($x_t^4$), and the unit investment cost $I_t^4$, which decreases based on the learning from previous years' capacity investments. The resulting bilinearity would turn the optimization problem into a non-convex, non-linear program. The segmented simplification is used to avoid this and keep the program computationally feasible in reasonable time, while still sufficiently capturing the interaction between scale-up and learning.
 
 \subsection{Results}
-The result of the first model is shown in figure 4.1. It can be observed that over short time horizons, BECCS dominates the optimal portfolios, while A/R dominates the longer time horizons. Enhanced rock weathering only plays a minimal role in short- and medium-term portfolios, while DAC is not used at all. Looking at the costs, it can be observed that the longest time-frame is more than an order of magnitude cheaper than the shortest timeframe.\vspace{2mm}
+The result of the first model is shown in figure 4.1. It can be observed that over the shortest time horizon, BECCS dominates the optimal portfolio, while A/R dominates the longer time horizons. Enhanced rock weathering only plays a minimal role in short- and medium-term portfolios, while DAC is not used at all. Looking at the costs, it can be observed that the longest time-frame is more than an order of magnitude cheaper than the shortest timeframe.\vspace{2mm}
 
 \begin{figure}[ht!]
   \begin{center}
@@ -172,12 +159,12 @@ The result of the first model is shown in figure 4.1. It can be observed that ov
   \vspace*{-\baselineskip}
 \end{figure}
 
-The results of the second model (Fig 4.2) are similar, albeit at a lower cost starting from the 10 year time horizon, and with a significant deployment of BECCS in the medium time-frames. Most notably, however, the 50 year time horizont now creates a significant overshoot over the target of 5 Gt. A detailed comparison of the different NET contributions over the four different time horizons is shown in Appendix A.4.\vspace{2mm}
+The results of the second model (Fig 4.2) are similar, albeit at a lower cost starting from the 10 year time horizon, and with a still significant deployment of BECCS in the medium time-frames. Most notably, however, the 50 year time horizont now creates a significant overshoot over the target of 5 GtCO$_2$. A detailed comparison of the different NET contributions over the four different time horizons is shown in Appendix A.4.\vspace{2mm}
 
 \begin{figure}[ht!]
   \begin{center}
     \includegraphics[width=1\linewidth]{figures/annual_static_optimization_bars.png}
-    \caption{Optimal static portfolio (5 Gt CDR), annual removal constraint}
+    \caption{Optimal static portfolio (5 Gt CDR) - annual removal constraint}
     \label{fig:annual_static_optimization_bars}
   \end{center}
   \vspace*{-\baselineskip}

@@ -1,10 +1,10 @@
 \mychapter{1}{Appendix}
-\vspace*{-\baselineskip}
 \section{Detailed BiCRS MACC figures}
+The following figures present detailed marginal abatement cost curves of BECCS and Biochar, with breakdowns of the cost components as well as with and without leakage, transport and storage costs, and co-revenues.
 \begin{figure}[ht]
 \vspace*{-\baselineskip}
   \begin{center}
-    \includegraphics[width=0.85\linewidth]{figures/beccs_macc_chart.png}
+    \includegraphics[width=0.8\linewidth]{figures/beccs_macc_chart.png}
     \caption{Detailed BECCS marginal abatement cost curves}
     \label{fig:beccs_macc_chart}
   \end{center}
@@ -14,173 +14,331 @@
 \begin{figure}[ht]
 \vspace*{-\baselineskip}
   \begin{center}
-    \includegraphics[width=0.85\linewidth]{figures/biochar_macc_chart.png}
+    \includegraphics[width=0.8\linewidth]{figures/biochar_macc_chart.png}
     \caption{Detailed Biochar marginal abatement cost curves}
     \label{fig:biochar_macc_chart}
   \end{center}
   \vspace{-2em}
 \end{figure}
 
-\section{Derivation of formulas (3.2) and (3.6)}
-Derivation of equation 3.2:\hfill \break
-Activation energy \(E_a\) from \textcite{wogelius_olivine_1992}:
+\newpage
+\section{Derivation of activation energy and rock lifetime formulas}
+The original formula for the activation energy \(E_a\) from \textcite{wogelius_olivine_1992} used the Arrhenius relationship \parencite{arrhenius_uber_1889}, which describes the temperature dependence of chemical reaction rates, to calculate the activation energy of olivine rock:
 \[
   E_a = 2.303 * R * \frac{\log_{10}R_1-\log_{10}R_2}{\frac{1}{T_2}-\frac{1}{T_1}}
 \]
+They computed the activation energy to be 79.5 kJ mol$^{-1}$ of olivine rock, based on their own experiments and previous literature. This formula was rearranged for the dissolution rate ($R_1$) at temperature $T_1$ (in Kelvin) based on known values for the activation energy and dissolution rate $R_2$ at temperature $T_2$, such that
 \[
-  \Leftrightarrow \log_{10}R_1 = \frac{E_a}{2.303*R}*\left(\frac{1}{T_2}-\frac{1}{T_1}\right) + \log_{10}R_2
+  \log_{10}R_1 = \frac{E_a}{2.303*R}*\left(\frac{1}{T_2}-\frac{1}{T_1}\right) + \log_{10}R_2
 \]
-with \(T_i\) being the temperature in Kelvin and \(R_i\) being the dissolution rate at the respective temperature. The activation energy was computed by \textcite{wogelius_olivine_1992} to be 79.5 \(\frac{kJ}{mol}\) of olivine rock, based on their own experiments and previous literature.\hfill \break
+This was then combined with the pH-based formula for the dissolution rate at 25 °C (= 262.15 K) defined by \textcite{hangx_coastal_2009}, so that
+\[
+  \log_{10}R_1 = 1.972R*\left(\frac{1}{262.15}-\frac{1}{K}\right) + \log_{10}R_{diss,25}(pH).
+\]
+With $R$ and $R_{{\text{diss}}, 25}(pH)$ plugged in, this resulted in the final equation for the dissolution rate based on temperature and pH value:
+\begin{equation}
+  \log_{10}{R_{\text{diss}}(pH, K)} = 16.4\left(\frac{1}{262.15}-\frac{1}{K}\right)-7.3656 - 0.297*pH.
+\end{equation}
+
+\hfill \break
 \break
-Derivation of equation 3.6:
+For the derivation of the average lifetime of a unit of rock, the integral of the shrinking core model designed by \textcite{hangx_coastal_2009} was used:
 \[
   L = \int_0^{\infty}m(y)\,dy= \int_0^Y\left(1-\frac{y}{Y}\right)^3\,dy \quad\text{for } 0 \le y \le Y
 \]
-by substituting \(u = \frac{y}{Y}\), rewrite as
+By substituting \(u = \frac{y}{Y}\), this was re-writen to
 \[
   L = \int_0^1(1-u)^3\,du*Y = Y\int_0^1(1-u)^3\,du
 \]
-solving to
+which was solved to yield
 \[
-  L = Y\left[-\frac{(1-u)^4}{4}\right]_{0}^{1} = Y\left[\left(-\frac{(1-1)^4}{4}\right)-\left(-\frac{(1-0)^4}{4}\right)\right] = \frac{Y}{4}
+  L = Y\left[-\frac{(1-u)^4}{4}\right]_{0}^{1} = Y\left[\left(-\frac{(1-1)^4}{4}\right)-\left(-\frac{(1-0)^4}{4}\right)\right] = \frac{Y}{4}.
 \]
 
 \newpage
 \section{Sample ERW mining operation}
-\begin{table}[]
-  \begin{tabular}{lll}
-    \multicolumn{2}{l}{\textbf{Sample mining operation - 15 Mt CO$_2$ / yr}}             &                                  \\ \hline
-    \hline
-    \multicolumn{1}{|l|}{Annual rock volume}     & \multicolumn{1}{l|}{Mt}        & \multicolumn{1}{l|}{15}          \\ \hline
-    \multicolumn{1}{|l|}{Daily rock volume}      & \multicolumn{1}{l|}{t}         & \multicolumn{1}{l|}{41096}       \\ \hline
-    \multicolumn{1}{|l|}{Operating hours}        & \multicolumn{1}{l|}{h / day}   & \multicolumn{1}{l|}{12}          \\ \hline
-    \multicolumn{1}{|l|}{Machinery lifetime}     & \multicolumn{1}{l|}{yr}        & \multicolumn{1}{l|}{20}          \\ \hline
-    &                                &                                  \\
-    \textbf{Mining}                              &                                &                                  \\ \hline
-    \multicolumn{1}{|l|}{Drill rig capacity}     & \multicolumn{1}{l|}{t / day}   & \multicolumn{1}{l|}{50000}       \\ \hline
-    \multicolumn{1}{|l|}{Drill rigs required}    & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{1}           \\ \hline
-    \multicolumn{1}{|l|}{Drill rig unit price}   & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,500,000}   \\ \hline
-    \multicolumn{1}{|l|}{Drill rig cost}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,500,000}   \\ \hline
-    &                                &                                  \\ \hline
-    \multicolumn{1}{|l|}{Loading time}           & \multicolumn{1}{l|}{min}       & \multicolumn{1}{l|}{2}           \\ \hline
-    \multicolumn{1}{|l|}{Loader capacity}        & \multicolumn{1}{l|}{t}         & \multicolumn{1}{l|}{70}          \\ \hline
-    \multicolumn{1}{|l|}{Loader capacity}        & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{2100}        \\ \hline
-    \multicolumn{1}{|l|}{Loaders required}       & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{2}           \\ \hline
-    \multicolumn{1}{|l|}{Loader unit price}      & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{2,000,000}   \\ \hline
-    \multicolumn{1}{|l|}{Loader cost}            & \multicolumn{1}{l|}{\textbf{}} & \multicolumn{1}{l|}{4,000,000}   \\ \hline
-    &                                &                                  \\ \hline
-    \multicolumn{1}{|l|}{Truck capacity}         & \multicolumn{1}{l|}{t}         & \multicolumn{1}{l|}{100}         \\ \hline
-    \multicolumn{1}{|l|}{Truck avg. speed}       & \multicolumn{1}{l|}{km / h}    & \multicolumn{1}{l|}{20}          \\ \hline
-    \multicolumn{1}{|l|}{Distance pit - grinder} & \multicolumn{1}{l|}{km}        & \multicolumn{1}{l|}{5}           \\ \hline
-    \multicolumn{1}{|l|}{Truck troundtrip time}  & \multicolumn{1}{l|}{h}         & \multicolumn{1}{l|}{0.57}        \\ \hline
-    \multicolumn{1}{|l|}{Truck capacity}         & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{176}         \\ \hline
-    \multicolumn{1}{|l|}{Trucks required}        & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{20}          \\ \hline
-    \multicolumn{1}{|l|}{Truck unit price}       & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{500,000}     \\ \hline
-    \multicolumn{1}{|l|}{Truck cost}             & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{10,000,000}  \\ \hline
-    &                                &                                  \\ \hline
-    \multicolumn{1}{|l|}{CapEx - Mining}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{15,500,000}  \\ \hline
-    \multicolumn{1}{|l|}{CapEx per tonne}        & \multicolumn{1}{l|}{\$ / t OL} & \multicolumn{1}{l|}{0.10}        \\ \hline
-    &                                &                                  \\
-    \textbf{Processing}                          &                                &                                  \\ \hline
-    \multicolumn{1}{|l|}{Crusher capacity}       & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{600}         \\ \hline
-    \multicolumn{1}{|l|}{Crushers required}      & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{6}           \\ \hline
-    \multicolumn{1}{|l|}{Crusher unit price}     & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{2,500,000}   \\ \hline
-    \multicolumn{1}{|l|}{Crusher cost}           & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{15,000,000}  \\ \hline
-    &                                &                                  \\ \hline
-    \multicolumn{1}{|l|}{P Grinder capacity}     & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{100}         \\ \hline
-    \multicolumn{1}{|l|}{P Grinders required}    & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{35}          \\ \hline
-    \multicolumn{1}{|l|}{P Grinder unit price}   & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,000,000}   \\ \hline
-    \multicolumn{1}{|l|}{P Grinder cost}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{35,000,000}  \\ \hline
-    \multicolumn{1}{|l|}{S Grinder capacity}     & \multicolumn{1}{l|}{t / h}     & \multicolumn{1}{l|}{100}         \\ \hline
-    \multicolumn{1}{|l|}{S Grinders required}    & \multicolumn{1}{l|}{\#}        & \multicolumn{1}{l|}{35}          \\ \hline
-    \multicolumn{1}{|l|}{S Grinder unit price}   & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{1,000,000}   \\ \hline
-    \multicolumn{1}{|l|}{S Grinder cost}         & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{35,000,000}  \\ \hline
-    &                                &                                  \\ \hline
-    \multicolumn{1}{|l|}{CapEx - Processing}     & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{85,000,000}  \\ \hline
-    \multicolumn{1}{|l|}{CapEx per tonne}        & \multicolumn{1}{l|}{\$ / t OL} & \multicolumn{1}{l|}{0.53}        \\ \hline
-    &                                &                                  \\
-    \textbf{Total}                               & \textit{}                      & \textit{}                        \\ \hline
-    \multicolumn{1}{|l|}{Total CapEx}            & \multicolumn{1}{l|}{\$}        & \multicolumn{1}{l|}{100,500,000} \\ \hline
-    \multicolumn{1}{|l|}{Total CapEx per tonne}  & \multicolumn{1}{l|}{\$ / t OL} & \multicolumn{1}{l|}{0.63}        \\ \hline
-  \end{tabular}
-\end{table}
+Tables A.1 and A.2 show the cost of the exemplary US-based ERW operation to remove 15 GtCO$_2$ per year. Note that the units are cost (USD) per tonne of rock material mined, processed, and applied, not in tonnes of CO$_2$ removed.
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.3}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lrr}
+\hline
+\textbf{Parameter} & \textbf{Unit} & \textbf{Value} \\ \hline
 
-\begin{table}[]
-\begin{tabular}{lll}
-\multicolumn{2}{l}{\textbf{Sample mining operation - 15 Mt / yr}}                     &                                  \\ \hline
-\textbf{Fixed cost}                                 &                                 &                                  \\ \hline
-\multicolumn{1}{|l|}{Total CapEx}                   & \multicolumn{1}{l|}{\$}         & \multicolumn{1}{l|}{100,500,000} \\ \hline
-\multicolumn{1}{|l|}{Annual maintenance}            & \multicolumn{1}{l|}{\%}         & \multicolumn{1}{l|}{2.2}         \\ \hline
-\multicolumn{1}{|l|}{Annual maintenance cost}       & \multicolumn{1}{l|}{\$}         & \multicolumn{1}{l|}{2,211,000}   \\ \hline
-\textbf{Total fixed cost}                                 & \textbf{\$ / t OL}              & \textbf{0.147}                   \\
-                                                    &                                 &                                  \\
-\textbf{Variable cost}                              &                                 &                                  \\ \hline
-\multicolumn{1}{|l|}{Energy - drilling \& blasting} & \multicolumn{1}{l|}{kWh / t OL} & \multicolumn{1}{l|}{5.23}        \\ \hline
-\multicolumn{1}{|l|}{Energy cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{0.23}        \\ \hline
-\multicolumn{1}{|l|}{Labour}                        & \multicolumn{1}{l|}{h / t OL}   & \multicolumn{1}{l|}{0.14}        \\ \hline
-\multicolumn{1}{|l|}{Labour cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{9.84}        \\ \hline
-\textit{\textbf{Mining   cost}}                     & \textit{\textbf{\$ / t OL}}     & \textit{\textbf{10.07}}          \\ \hline
-\multicolumn{1}{|l|}{Electric energy - grinding}    & \multicolumn{1}{l|}{kWh / t OL} & \multicolumn{1}{l|}{150.347}     \\ \hline
-\multicolumn{1}{|l|}{Energy cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{6.62}        \\ \hline
-\multicolumn{1}{|l|}{Labour}                        & \multicolumn{1}{l|}{h / t OL}   & \multicolumn{1}{l|}{0.00}        \\ \hline
-\multicolumn{1}{|l|}{Labour cost}                   & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{0.00}        \\ \hline
-\textit{\textbf{Processing cost}}                   & \textit{\textbf{\$ / t OL}}     & \textit{\textbf{6.62}}           \\ \hline
-\multicolumn{1}{|l|}{Avg. transport distance rail}  & \multicolumn{1}{l|}{km}         & \multicolumn{1}{l|}{1000}        \\ \hline
-\multicolumn{1}{|l|}{Avg. transport distance road}  & \multicolumn{1}{l|}{km}         & \multicolumn{1}{l|}{200}         \\ \hline
-\multicolumn{1}{|l|}{Transport cost rail}           & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{8.08}        \\ \hline
-\multicolumn{1}{|l|}{Transport cost road}           & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{6.18}        \\ \hline
-\multicolumn{1}{|l|}{Spreading time}                & \multicolumn{1}{l|}{h / ha}     & \multicolumn{1}{l|}{0.5}         \\ \hline
-\multicolumn{1}{|l|}{Spreading cost}                & \multicolumn{1}{l|}{\$ / t OL}  & \multicolumn{1}{l|}{2.58}        \\ \hline
-\textit{\textbf{Application cost}}                  & \textit{\textbf{\$ / t OL}}     & \textit{\textbf{16.83}}          \\
-\textbf{Total variable cost}                        & \textbf{\$ / t OL}              & \textbf{33.51}                   \\
-                                                    &                                 &                                 
-\end{tabular}
+\multicolumn{3}{l}{\textbf{Fixed cost}} \\ \hline
+Total CapEx             & USD       & 100{,}500{,}000 \\
+Annual maintenance      & \%        & 2.2 \\
+Annual maintenance cost & USD       & 2{,}211{,}000 \\
+\textbf{Total fixed cost} & \textbf{USD/t} & \textbf{0.147} \\ \hline
+
+\multicolumn{3}{l}{\textbf{Variable cost}} \\ \hline
+
+\multicolumn{3}{l}{\textit{Mining}} \\
+Energy (drilling \& blasting) & kWh t$^{-1}$ & 5.23 \\
+Energy cost                   & USD t$^{-1}$ & 0.23 \\
+Labour required                       & hr t$^{-1}$   & 0.14 \\
+Labour cost                   & USD t$^{-1}$ & 9.84 \\
+\textit{Mining cost}          & \textit{USD/t} & \textit{10.07} \\
+
+\multicolumn{3}{l}{\textit{Processing}} \\
+Electric energy (grinding)    & kWh t$^{-1}$ & 150.35 \\
+Energy cost                   & USD t$^{-1}$ & 6.62 \\
+Labour required                       & h/t   & 0.00 \\
+Labour cost                   & USD t$^{-1}$ & 0.00 \\
+\textit{Processing cost}      & \textit{USD/t} & \textit{6.62} \\
+
+\multicolumn{3}{l}{\textit{Transport \& application}} \\
+Transport distance (rail)     & km    & 1{,}000 \\
+Transport distance (road)     & km    & 200 \\
+Transport cost (rail)         & USD t$^{-1}$ & 8.08 \\
+Transport cost (road)         & USD t$^{-1}$ & 6.18 \\
+Spreading time                & hr ha$^{-1}$  & 0.5 \\
+Spreading cost                & USD t$^{-1}$ & 2.58 \\
+\textit{T\&A cost}     & \textit{USD t$^{-1}$} & \textit{16.83} \\
+
+\textbf{Total variable cost}  & \textbf{USD t$^{-1}$} & \textbf{33.51} \\ \hline
+
+\end{tabular}}
+\caption{Cost structure of a sample US-based ERW operation (denoted in USD per tonne of olivine rock)}
 \end{table}
 
 \newpage
-\section{Static portfolio removal timelines}
-\begin{figure}[ht!]
-  \begin{center}
-    \includegraphics[width=0.9\linewidth]{figures/overall_static_optimization_lines.png}
-    \caption{Optimal static portfolio - NET shares}
-    \label{fig:overall_static_optimization_lines}
-    \vspace*{-\baselineskip}
-  \end{center}
-\end{figure}
 
-\begin{figure}[ht!]
-  \begin{center}
-    \includegraphics[width=0.9\linewidth]{figures/annual_static_optimization_lines.png}
-    \caption{Optimal static portfolio, annual constraint  - NET shares}
-    \label{fig:overall_static_optimization_lines}
-    \vspace*{-\baselineskip}
-  \end{center}
-\end{figure}
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.03}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lrr}
+\hline
+\textbf{Parameter} & \textbf{Unit} & \textbf{Value} \\ \hline
 
-\begin{table}[h]
-\vspace*{-\baselineskip}
-\small
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{lllll}
-\textbf{Technology} & \multicolumn{1}{r}{5 years} & 10 years & 20 years & 50 years \\ \hline
-Afforestation       & 58.40                       & 20.26    & 7.35     & 2.63\\
-BECCS               & 130.50                      & -   & -   & -   \\
-Enhanced Weathering & 25.52                       & 25.52    & -    & -    \\
-Direct Air Capture  & -                           & -        & -        & -       
-\end{tabular}
-\caption{Average LCOC's - static optimization}
+\multicolumn{3}{l}{\textbf{General}} \\ \hline
+Annual rock volume      & Mt       & 15 \\
+Daily rock volume       & t        & 41{,}096 \\
+Operating hours         & hr day$^{-1}$     & 12 \\
+Machinery lifetime      & yr        & 20 \\ \hline
+
+\multicolumn{3}{l}{\textbf{Mining}} \\ \hline
+Drill rig capacity      & t day$^{-1}$     & 50{,}000 \\
+Drill rigs required     & --        & 1 \\
+Drill rig unit price    & USD       & 1{,}500{,}000 \\
+Drill rig cost          & USD       & 1{,}500{,}000 \\
+
+Loading time            & min       & 2 \\
+Loader capacity         & t         & 70 \\
+Loader capacity         & t hr$^{-1}$       & 2{,}100 \\
+Loaders required        & --        & 2 \\
+Loader unit price       & USD       & 2{,}000{,}000 \\
+Loader cost             & USD       & 4{,}000{,}000 \\
+
+Truck capacity          & t         & 100 \\
+Truck avg. speed        & km h$^{-1}$      & 20 \\
+Distance pit--grinder   & km        & 5 \\
+Truck roundtrip time    & h         & 0.57 \\
+Truck capacity          & t hr$^{-1}$       & 176 \\
+Trucks required         & --        & 20 \\
+Truck unit price        & USD       & 500{,}000 \\
+Truck cost              & USD       & 10{,}000{,}000 \\
+
+CapEx -- Mining         & USD       & 15{,}500{,}000 \\
+\textbf{CapEx per tonne of rock}         & \textbf{USD t$^{-1}$}     & \textbf{0.10} \\ \hline
+
+\multicolumn{3}{l}{\textbf{Processing}} \\ \hline
+Crusher capacity        & t hr$^{-1}$       & 600 \\
+Crushers required       & --        & 6 \\
+Crusher unit price      & USD       & 2{,}500{,}000 \\
+Crusher cost            & USD       & 15{,}000{,}000 \\
+
+Primary Grinder capacity      & t hr$^{-1}$       & 100 \\
+Primary Grinders required     & --        & 35 \\
+Primary Grinder unit price    & USD       & 1{,}000{,}000 \\
+Primary Grinder cost          & USD       & 35{,}000{,}000 \\
+
+Secondary Grinder capacity      & t hr$^{-1}$       & 100 \\
+Secondary Grinders required     & --        & 35 \\
+Secondary Grinder unit price    & USD       & 1{,}000{,}000 \\
+Secondary Grinder cost          & USD       & 35{,}000{,}000 \\
+
+CapEx -- Processing     & USD       & 85{,}000{,}000 \\
+\textbf{CapEx per tonne of rock}         & \textbf{USD t$^{-1}$}     & \textbf{0.53} \\ \hline
+
+\multicolumn{3}{l}{\textbf{Total}} \\ \hline
+Total CapEx             & USD       & 100{,}500{,}000 \\
+\textbf{Total CapEx per tonne of rock}   & \textbf{USD t$^{-1}$}     & \textbf{0.63} \\ \hline
+
+\end{tabular}}
+\caption{Techno-economic parameters for a sample US-based ERW operation (denoted in USD per tonne of olivine rock)}
 \end{table}
 
-\begin{table}[h]
-\vspace*{-\baselineskip}
-\small
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{lllll}
-\textbf{Technology} & \multicolumn{1}{r}{5 years} & 10 years & 20 years & 50 years \\ \hline
-Afforestation       & 57.20                       & 20.04    & 7.92     & 3.59\\
-BECCS               & 131.76                      & 127.20   & 124.48   & 120.78   \\
-Enhanced Weathering & 25.52                       & 25.52    & 25.52    & 25.52    \\
-Direct Air Capture  & -                           & -        & -        & -       
-\end{tabular}
-\caption{Average LCOC's - static optimization, annual constraint}
+\clearpage
+\section{Liquid DAC learning effects}
+Figure A.3 shows the drop in capacity cost per unit of L-DAC. Compared to solid DAC, it starts significantly lower, but the drop in cost is less pronounced due to the lower assumed learning rates.
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/dac_learning_ldac.png}
+    \caption{Exemplary liquid DAC CapEx learning curve}
+    \label{fig:dac_capex_learning}
+  \end{center}
+\end{figure}
+
+\clearpage
+\section{Static portfolio removal timelines}
+Figures A.4 and A.5 show the deployment of the various NETs over time under the different time horizons considered in the static optimization model. Tables A.3 and A.4 show the corresponding total removals, total costs and average LCOCs.
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=\linewidth]{figures/overall_static_optimization_lines.png}
+    \caption{Optimal static portfolio}
+    \label{fig:overall_static_optimization_lines}
+    \vspace*{-\baselineskip}
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.4}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{llrrr}
+\hline
+\textbf{Horizon}          & \textbf{Technology} & \textbf{Total CDR (MtCO$_2$)} & \textbf{Total Cost (M USD)} & \textbf{Average LCOC (USD)} \\ \hline
+
+\multirow{3}{*}{5 years}  
+& A/R       & 1{,}915.8 & 114{,}830 & 59.94 \\
+& ERW       & 34.9      & 890       & 25.52 \\
+& BECCS     & 3{,}049.3 & 440{,}410 & 144.43 \\ \hline
+
+\multirow{2}{*}{10 years} 
+& A/R       & 4{,}920.6 & 96{,}557  & 19.62 \\
+& ERW       & 79.4      & 2{,}026   & 25.52 \\ \hline
+
+\multirow{1}{*}{20 years} 
+& A/R       & 5{,}000.0 & 36{,}708  & 7.34 \\ \hline
+
+\multirow{1}{*}{50 years} 
+& A/R       & 5{,}000.0 & 13{,}172  & 2.63 \\ \hline
+
+\end{tabular}}
+\caption{Cost and deployment by CDR technology across time horizons}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=\linewidth]{figures/annual_static_optimization_lines.png}
+    \caption{Optimal static portfolio -- annual constraint}
+    \label{fig:overall_static_optimization_lines}
+    \vspace*{-\baselineskip}
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.4}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{llrrr}
+\hline
+\textbf{Horizon}          & \textbf{Technology} & \textbf{Total CDR (MtCO$_2$)} & \textbf{Total Cost (M USD)} & \textbf{Average LCOC (USD)} \\ \hline
+\multirow{3}{*}{5 years}  & A/R       & 1{,}899.0                   & 112{,}344  & 59.16                       \\
+                          & ERW                 & 34.9                        & 890        & 25.52                       \\
+                          & BECCS               & 3{,}066.1                   & 447{,}523  & 145.96                      \\ \hline
+\multirow{3}{*}{10 years} & A/R       & 4{,}092.6                   & 79{,}946   & 19.53                       \\ 
+                            & ERW                 & 27.2                        & 694        & 25.52                       \\
+                            & BECCS               & 880.2                       & 124{,}565  & 141.52                      \\ \hline
+\multirow{3}{*}{20 years} & A/R       & 4{,}680.9                   & 37{,}319   & 7.97                        \\ 
+                          & ERW                 & 19.7                        & 503        & 25.52                       \\
+                          & BECCS               & 299.4                       & 41{,}608   & 138.98                      \\ \hline
+\multirow{3}{*}{50 years} & A/R       & 6{,}740.7                   & 24{,}432   & 3.62                        \\ 
+                          & ERW                 & 12.9                        & 330       & 25.52                       \\
+                        & BECCS               & 93.7                        & 12{,}656   & 135.09                      \\ \hline
+\end{tabular}}
+\caption{Cost and deployment by CDR technology across time horizons -- annual constraint}
+\end{table}
+
+\clearpage
+\section{Alternative dynamic portfolio scenarios}
+\subsection{Afforestation using forest plantations}
+The baseline portfolio presented in chapter 4 uses assisted natural regeneration for afforestation. Figure A.6 presents an alternative scenario which uses forest plantations, that is manually planted forests, instead.\vspace{2mm}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/optimal_dynamic_portfolio_planted_ar.png}
+    \caption{Optimal dynamic portfolio using forest plantation}
+    \label{fig:optimal_dynamic_portfolio_planted_ar}
+  \end{center}
+  \vspace*{-\baselineskip}
+\end{figure}
+
+Compared to the baseline model, A/R ramps up faster, but also shows exhaustion much earlier, with the decline beginning already in the 2040s. Considering the much faster but shorter growth cycles of forest plantations (see figure 3.3), this is the expected result. Looking at the amount removed by A/R and the respective LCOC, this scenario shows a significantly lower overall contribution of A/R at 69 GtCO$_2$, compared to 106 Gt in the baseline scenario, and a much higher LCOC of 67.54 USD GtCO$_2^{-1}$. This matches the MACC presented in figure 3.5, and shows that while using forest plantations may initially deliver faster CDR, its overall effect is negative in regards to both, the A/R potential and the associated costs.
+
+\begin{table}[h!]
+\adjustbox{max width=\textwidth}{%
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
+
+\textbf{A/R}   & 69{,}059.05  & 4{,}663.93  & 67.54 \\
+\textbf{ERW}   & 46{,}154.01  & 1{,}284.19  & 27.82 \\
+\textbf{BECCS} & 264{,}961.26 & 46{,}120.89 & 174.07 \\
+\textbf{DAC}   & 498{,}295.81 & 123{,}776.38 & 248.40 \\ \hline
+
+\textbf{Total} & 878{,}470.13 & 175{,}845.40 & 200.16 \\ \hline
+\end{tabular}}
+\caption{Breakdown of amounts removed and cost by NET - forest plantation}
+\end{table}
+
+\subsection{Increased Enhanced Weathering expansion}
+Figure A.7 presents another alternative scenario, in which which the the available rock material was doubled to start at 1\% of the global coal mining capacity and increase to 30\% over 50 years, while the annual allowable increase compared to the previous year was also doubled to 20\%.\vspace{2mm}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/optimal_dynamic_portfolio_more_erw.png}
+    \caption{Optimal dynamic portfolio with increased ERW}
+    \label{fig:optimal_dynamic_portfolio_moreerw}
+  \end{center}
+  \vspace*{-\baselineskip}
+\end{figure}
+
+Comparing the results to the baseline model, ERW, as expected, takes a much larger share of the overall portfolio and ends up delivering about 2.3 Gt of CDR annually and nearly 98 Gt overall by 2100, compared to 46 Gt in the base model. This increase is balanced out by delay of DAC operations by about 4 years, and a reduction its contributions from 451 GtCO$_2$ in the base model to 405 Gt, while the deployment profiles of A/R and BECCS remain largely stable. Overall, the deployment timeline does not materially change, showing that the recommendations regarding investments and policies derived from the base model remain true even if ERW is ramped up more quickly than expected. Looking at the overall costs, we see a reduction in the weighted average cost from 187.40 USD to only 172.87 USD tCO$_2^{-1}$ due to the increase in lower-cost CDR from ERW.
+
+\begin{table}[h!]
+\adjustbox{max width=\textwidth}{%
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
+
+\textbf{A/R}   & 105{,}564.14 & 1{,}074.50  & 10.18 \\
+\textbf{ERW}   & 97{,}913.77  & 2{,}796.87  & 28.56 \\
+\textbf{BECCS} & 270{,}167.08 & 46{,}990.45 & 173.93 \\
+\textbf{DAC}   & 405{,}129.87 & 101{,}067.19 & 249.47 \\ \hline
+
+\textbf{Total} & 878{,}774.86 & 151{,}929.01 & 172.87 \\ \hline
+\end{tabular}}
+\caption{Breakdown of amounts removed and cost by NET - increased ERW}
+\end{table}
+
+\subsection{Afforestation excluded}
+In order to consider the doubts about the permanence of A/R and its comparability to other permanent NETs, this scenario excludes the use of A/R entirely. Figure A.8 presents the resulting NET portfolio. \vspace{2mm}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/optimal_dynamic_portfolio_no_ar.png}
+    \caption{Optimal dynamic portfolio with afforestation excluded}
+    \label{fig:optimal_dynamic_portfolio_moreerw}
+  \end{center}
+  \vspace*{-\baselineskip}
+\end{figure}
+
+Compared to the baseline model, BECCS now has to fully shoulder the entire CDR demand in the early years, while large-scale DAC operations begin about 8 years earlier, in the mid-2030s. Ultimately, DAC ends up delivering a total of 549 Gt of CDR, nearly 100 Gt more than in the baseline portfolio. The overall contribution of BECCS by about 20 Gt, caused by the early ramp-up, while the ERW pathway remains unchanged. Looking at the cost of this scenario, the total cost has increased by nearly 13\% to a total of about 187 trillion USD, with the average cost increasing from 187.40 USD to 212.87 USD tCO$_2^{-1}$. This significant increase demonstrates that including afforestation in CDR portfolios to delivery cheap, early results is an essential lever to improve the overall economic feasibility of large-scale carbon removal.
+
+\begin{table}[h!]
+\adjustbox{max width=\textwidth}{%
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
+
+\textbf{ERW}   & 46{,}154.01  & 1{,}284.19  & 27.82 \\
+\textbf{BECCS} & 283{,}509.60 & 49{,}287.86 & 173.85 \\
+\textbf{DAC}   & 549{,}311.89 & 136{,}520.90 & 248.53 \\ \hline
+
+\textbf{Total} & 878{,}975.50 & 187{,}092.95 & 212.87 \\ \hline
+\end{tabular}}
+\caption{Breakdown of amounts removed and cost by NET - afforestation excluded}
 \end{table}
