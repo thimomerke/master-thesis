@@ -23,7 +23,7 @@ The optimization problem can thus be written as
 \Big)}_{\text{BECCS (cont.)}} \\[4pt]
 & + \underbrace{F^3(q_t^3)}_{\text{ERW}} \\[4pt]
 & + \underbrace{
-    q_t^4 (k^{4,v}  + k^{4,ts})
+    q_t^\text{4,gross} (k^{4,v}  + k^{4,ts})
     + X^4 k^{4,f} 
     + x_t^4 I_t^4
 }_{\text{DAC}}
@@ -58,7 +58,7 @@ u_{t,c,b}^\text{bm} \leq a_{c,b}^\text{bm} \qquad \forall t \in T \backslash\{ 0
 \end{equation}
 Gross carbon captured is then proportional to the biomass throughput:
 \begin{equation}
-q_{t,c,b}^\text{gross} = \eta_{c,b}^{cap}u_{t,c,b}^{bm} \qquad \forall t \in T, (c,b) \in \mathcal{P}.
+q_{t,c,b}^\text{3,gross} = \eta_{c,b}^{cap}u_{t,c,b}^{bm} \qquad \forall t \in T, (c,b) \in \mathcal{P}.
 \end{equation}
 The installed BECCS power capacity limits the annual biomass throughput through an energy-output constraint:
 \begin{equation}
@@ -68,7 +68,7 @@ where $\mathcal{B}_c$ denotes the set of biomass types availabile in country $c$
 
 The net BECCS carbon removal per year are finally computed as the amount of CO$_2$ net of the leakage:
 \begin{equation}
-q_{t}^2 = (1-\alpha^2) \sum_{(c,b)\in \mathcal{P}}q_{t,c,b}^\text{gross} \qquad \forall t \in T.
+q_{t}^2 = (1-\alpha^2) \sum_{(c,b)\in \mathcal{P}}q_{t,c,b}^\text{3,gross} \qquad \forall t \in T.
 \end{equation}
 where $\alpha^2$ is the BECCS leakage factor.\vspace{2mm}
 
@@ -113,7 +113,7 @@ For the new BECCS model, the initial electric capacity ($x_{0,c}^2$) is consider
   \vspace*{-\baselineskip}
 \end{figure}
 
-The resulting portfolio, shown in figure 4.3, is the direct answer to the second research question posed in section 1.3 ("What is the cost-minimizing global portfolio of NETs to meet the goals of the Paris agreement of limit global warming to "well below" 2 °C?"). The A/R approach is immediately deployed to its maximum potential, constrained only by the annual expansion limit and the overall available land area. Additionally, BECCS is also immediately deployed to cover the remaining CDR gap that A/R cannot fulfill, and is ramped up until it reaches its maximum as defined by the available waste biomass. Direct Air Capture only starts operating once A/R and BECCS are near their maximum, but later carries the bulk of the CDR efforts from the mid 2060s onwards. Enhanced Weathering is also deployed from the get go, but only plays a very limited role. In total, this portfolio includes 879 Gt of CDR until 2100, at a cost of 165T USD.\vspace{2mm}
+The resulting portfolio, shown in Figure 4.3, is the direct answer to the second research question posed in Section 1.3 ("What is the cost-minimizing global portfolio of NETs to meet the goals of the Paris agreement of limit global warming to "well below" 2 °C?"). The A/R approach is immediately deployed to its maximum potential, constrained only by the annual expansion limit and the overall available land area. Additionally, BECCS is also immediately deployed to cover the remaining CDR gap that A/R cannot fulfill, and is ramped up until it reaches its maximum as defined by the available waste biomass. Direct Air Capture only starts operating once A/R and BECCS are near their maximum, but later carries the bulk of the CDR efforts from the mid 2060s onwards. Enhanced Weathering is also deployed from the get go, but only plays a very limited role. In total, this portfolio includes 879 Gt of CDR until 2100 at a total cost of 177T USD.\vspace{2mm}
 
 \begin{table}[h!]
 \adjustbox{max width=\textwidth}{%
@@ -121,25 +121,37 @@ The resulting portfolio, shown in figure 4.3, is the direct answer to the second
 \begin{tabular}{lrrr}
 \hline
 \textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
-\textbf{A/R}   & 105{,}652.07 & 1{,}084.81  & 10.27 \\
+\textbf{A/R}   & 105{,}686.91 & 1{,}089.31  & 10.31 \\
 \textbf{ERW}   & 46{,}154.01  & 1{,}284.19  & 27.82 \\
-\textbf{BECCS} & 276{,}362.95 & 48{,}319.68 & 174.84 \\
-\textbf{DAC}   & 450{,}565.05 & 113{,}961.00 & 252.93 \\ \hline
-\textbf{Total} & 878{,}734.08 & 164{,}649.69 & 187.40 \\ \hline
+\textbf{BECCS} & 287{,}952.15 & 51{,}188.09 & 177.77 \\
+\textbf{DAC}   & 438{,}966.92 & 123{,}694.91 & 281.79 \\ \hline
+\textbf{Total} & 878{,}759.99 & 177{,}256.50 & 201.71 \\ \hline
 \end{tabular}}
 \caption{Breakdown of amounts removed and cost by NET}
 \end{table}
 
-Note that the cost values reported here are implied average costs derived from total costs divided by total CDR, and do not account for the time value of money or CO$_2$ removed. These values are not directly comparable to the LCOC estimates reported in the literature and the models constructed above, but the relative cost ordering between technologies is preserved and sufficient portfolio optimization.\vspace{2mm}
+Figure 4.4 shows the development of the average cost, with ERW staying nearly constant, while the costs of A/R and DAC drop significantly and the cost of BECCS actually increases over time.\vspace{2mm}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/annual_lcoc_by_tech.png}
+    \caption{Average cost development over time}
+    \label{fig:dac_capex_learning}
+    \vspace*{-\baselineskip}
+  \end{center}
+\end{figure}
+
+Finally, looking at the development of the capital expenditures per unit and capacity construction for DAC in Figure 4.5, we see a significant drop from the initial price of 1800 USD per tonne to 800 USD by 2040, and about 500 USD by 2060. We also see that investment in and construction of DAC begins immediately, even when it is not operated until the 2040s, and afterwards spikes in 20 year corresponding to the unit lifetime.\vspace{2mm}
 
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=1\linewidth]{figures/dac_capex_learning.png}
     \caption{DAC CapEx learning curve over time}
     \label{fig:dac_capex_learning}
+    \vspace*{-\baselineskip}
   \end{center}
 \end{figure}
 
-Looking at the development of the capital expenditures per unit and capacity construction for DAC in figure 4.5, we see a significant drop from the initial price of 1800 USD per tonne to below 1000 USD by 2030, and below 600 USD by 2045. We also see that investment in and construction of DAC begins immediately, even when it is not operated until the 2040s, and afterwards spikes in 20 year corresponding to the unit lifetime.\vspace{2mm}
+Note that the cost values reported here are implied average costs derived from total costs divided by total CDR, and do not account for the time value of money or CO$_2$ removed. While these values are comparable to the LCOC estimates reported in the literature and the models constructed above, they are the result of the optimization model and not of the LCOC formula 3.1.\vspace{2mm}
 
-A number of alternative scenarios, such as the use of forest plantations instead of assisted natural regeneration, the exclusion of A/R, or an increased availability of ERW, were considered and compared to the baseline scenario in appendix 6.
+A number of alternative scenarios, such as the the exclusion of A/R, use of forest plantations instead of assisted natural regeneration, or an increased availability of ERW, were considered and compared to the baseline scenario in Appendix 6.

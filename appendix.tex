@@ -1,11 +1,11 @@
 \mychapter{1}{Appendix}
-\section{Detailed BiCRS MACC figures}
-The following figures present detailed marginal abatement cost curves of BECCS and Biochar, with breakdowns of the cost components as well as with and without leakage, transport and storage costs, and co-revenues.
+\section{Detailed BiCRS MACC Figures}
+The following figures present detailed marginal removal cost curves of BECCS and Biochar, with breakdowns of the cost components as well as with and without leakage, transport and storage costs, and co-revenues.
 \begin{figure}[ht]
-\vspace*{-\baselineskip}
+%\vspace*{-\baselineskip}
   \begin{center}
-    \includegraphics[width=0.8\linewidth]{figures/beccs_macc_chart.png}
-    \caption{Detailed BECCS marginal abatement cost curves}
+    \includegraphics[width=0.87\linewidth]{figures/beccs_macc_chart.png}
+    \caption{Detailed BECCS marginal removal cost curves}
     \label{fig:beccs_macc_chart}
   \end{center}
   \vspace{-2em}
@@ -14,41 +14,41 @@ The following figures present detailed marginal abatement cost curves of BECCS a
 \begin{figure}[ht]
 \vspace*{-\baselineskip}
   \begin{center}
-    \includegraphics[width=0.8\linewidth]{figures/biochar_macc_chart.png}
-    \caption{Detailed Biochar marginal abatement cost curves}
+    \includegraphics[width=0.87\linewidth]{figures/biochar_macc_chart.png}
+    \caption{Detailed Biochar marginal removal cost curves}
     \label{fig:biochar_macc_chart}
   \end{center}
   \vspace{-2em}
 \end{figure}
 
 \newpage
-\section{Derivation of activation energy and rock lifetime formulas}
+\section{Derivation of Enhanced Weathering Formulas}
 The original formula for the activation energy \(E_a\) from \textcite{wogelius_olivine_1992} used the Arrhenius relationship \parencite{arrhenius_uber_1889}, which describes the temperature dependence of chemical reaction rates, to calculate the activation energy of olivine rock:
 \[
-  E_a = 2.303 * R * \frac{\log_{10}R_1-\log_{10}R_2}{\frac{1}{T_2}-\frac{1}{T_1}}
+  E_a = 2.303 R         \cdot \frac{\log_{10}R_1-\log_{10}R_2}{\frac{1}{T_2}-\frac{1}{T_1}}.
 \]
 They computed the activation energy to be 79.5 kJ mol$^{-1}$ of olivine rock, based on their own experiments and previous literature. This formula was rearranged for the dissolution rate ($R_1$) at temperature $T_1$ (in Kelvin) based on known values for the activation energy and dissolution rate $R_2$ at temperature $T_2$, such that
 \[
-  \log_{10}R_1 = \frac{E_a}{2.303*R}*\left(\frac{1}{T_2}-\frac{1}{T_1}\right) + \log_{10}R_2
+  \log_{10}R_1 = \frac{E_a}{2.303R}        \cdot\left(\frac{1}{T_2}-\frac{1}{T_1}\right) + \log_{10}R_2.
 \]
 This was then combined with the pH-based formula for the dissolution rate at 25 °C (= 262.15 K) defined by \textcite{hangx_coastal_2009}, so that
 \[
-  \log_{10}R_1 = 1.972R*\left(\frac{1}{262.15}-\frac{1}{K}\right) + \log_{10}R_{diss,25}(pH).
+  \log_{10}R_1 = 1.972R        \cdot\left(\frac{1}{262.15}-\frac{1}{K}\right) + \log_{10}R_{diss,25}(pH).
 \]
 With $R$ and $R_{{\text{diss}}, 25}(pH)$ plugged in, this resulted in the final equation for the dissolution rate based on temperature and pH value:
 \begin{equation}
-  \log_{10}{R_{\text{diss}}(pH, K)} = 16.4\left(\frac{1}{262.15}-\frac{1}{K}\right)-7.3656 - 0.297*pH.
+  \log_{10}{R_{\text{diss}}(pH, K)} = 16.4\left(\frac{1}{262.15}-\frac{1}{K}\right)-7.3656 - 0.297 \cdot pH.
 \end{equation}
 
 \hfill \break
 \break
 For the derivation of the average lifetime of a unit of rock, the integral of the shrinking core model designed by \textcite{hangx_coastal_2009} was used:
 \[
-  L = \int_0^{\infty}m(y)\,dy= \int_0^Y\left(1-\frac{y}{Y}\right)^3\,dy \quad\text{for } 0 \le y \le Y
+  L = \int_0^{\infty}m(y)\,dy= \int_0^Y\left(1-\frac{y}{Y}\right)^3\,dy \quad\text{for } 0 \le y \le Y.
 \]
 By substituting \(u = \frac{y}{Y}\), this was re-writen to
 \[
-  L = \int_0^1(1-u)^3\,du*Y = Y\int_0^1(1-u)^3\,du
+  L = \int_0^1(1-u)^3\,du \cdot Y = Y\int_0^1(1-u)^3\,du
 \]
 which was solved to yield
 \[
@@ -56,12 +56,12 @@ which was solved to yield
 \]
 
 \newpage
-\section{Sample ERW mining operation}
+\section{Sample ERW Mining Operation}
 Tables A.1 and A.2 show the cost of the exemplary US-based ERW operation to remove 15 GtCO$_2$ per year. Note that the units are cost (USD) per tonne of rock material mined, processed, and applied, not in tonnes of CO$_2$ removed.
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.3}
 \adjustbox{max width=\textwidth}{%
-\begin{tabular}{lrr}
+\begin{tabular}{llr}
 \hline
 \textbf{Parameter} & \textbf{Unit} & \textbf{Value} \\ \hline
 
@@ -69,7 +69,7 @@ Tables A.1 and A.2 show the cost of the exemplary US-based ERW operation to remo
 Total CapEx             & USD       & 100{,}500{,}000 \\
 Annual maintenance      & \%        & 2.2 \\
 Annual maintenance cost & USD       & 2{,}211{,}000 \\
-\textbf{Total fixed cost} & \textbf{USD/t} & \textbf{0.147} \\ \hline
+\textbf{Total fixed cost} & \textbf{USD t$^{-1}$} & \textbf{0.147} \\ \hline
 
 \multicolumn{3}{l}{\textbf{Variable cost}} \\ \hline
 
@@ -78,14 +78,14 @@ Energy (drilling \& blasting) & kWh t$^{-1}$ & 5.23 \\
 Energy cost                   & USD t$^{-1}$ & 0.23 \\
 Labour required                       & hr t$^{-1}$   & 0.14 \\
 Labour cost                   & USD t$^{-1}$ & 9.84 \\
-\textit{Mining cost}          & \textit{USD/t} & \textit{10.07} \\
+\textit{Mining cost}          & \textit{USD t$^{-1}$} & \textit{10.07} \\
 
 \multicolumn{3}{l}{\textit{Processing}} \\
 Electric energy (grinding)    & kWh t$^{-1}$ & 150.35 \\
 Energy cost                   & USD t$^{-1}$ & 6.62 \\
-Labour required                       & h/t   & 0.00 \\
+Labour required                       & hr t$^{-1}$   & 0.00 \\
 Labour cost                   & USD t$^{-1}$ & 0.00 \\
-\textit{Processing cost}      & \textit{USD/t} & \textit{6.62} \\
+\textit{Processing cost}      & \textit{USD t$^{-1}$} & \textit{6.62} \\
 
 \multicolumn{3}{l}{\textit{Transport \& application}} \\
 Transport distance (rail)     & km    & 1{,}000 \\
@@ -107,7 +107,7 @@ Spreading cost                & USD t$^{-1}$ & 2.58 \\
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.03}
 \adjustbox{max width=\textwidth}{%
-\begin{tabular}{lrr}
+\begin{tabular}{llr}
 \hline
 \textbf{Parameter} & \textbf{Unit} & \textbf{Value} \\ \hline
 
@@ -170,7 +170,7 @@ Total CapEx             & USD       & 100{,}500{,}000 \\
 \end{table}
 
 \clearpage
-\section{Liquid DAC learning effects}
+\section{Liquid DAC Learning Effects}
 Figure A.3 shows the drop in capacity cost per unit of L-DAC. Compared to solid DAC, it starts significantly lower, but the drop in cost is less pronounced due to the lower assumed learning rates.
 \begin{figure}[h!]
   \begin{center}
@@ -181,7 +181,7 @@ Figure A.3 shows the drop in capacity cost per unit of L-DAC. Compared to solid 
 \end{figure}
 
 \clearpage
-\section{Static portfolio removal timelines}
+\section{Static Portfolio Removal Timelines}
 Figures A.4 and A.5 show the deployment of the various NETs over time under the different time horizons considered in the static optimization model. Tables A.3 and A.4 show the corresponding total removals, total costs and average LCOCs.
 \begin{figure}[h!]
   \begin{center}
@@ -250,71 +250,9 @@ Figures A.4 and A.5 show the deployment of the various NETs over time under the 
 \end{table}
 
 \clearpage
-\section{Alternative dynamic portfolio scenarios}
-\subsection{Afforestation using forest plantations}
-The baseline portfolio presented in chapter 4 uses assisted natural regeneration for afforestation. Figure A.6 presents an alternative scenario which uses forest plantations, that is manually planted forests, instead.\vspace{2mm}
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=1\linewidth]{figures/optimal_dynamic_portfolio_planted_ar.png}
-    \caption{Optimal dynamic portfolio using forest plantation}
-    \label{fig:optimal_dynamic_portfolio_planted_ar}
-  \end{center}
-  \vspace*{-\baselineskip}
-\end{figure}
-
-Compared to the baseline model, A/R ramps up faster, but also shows exhaustion much earlier, with the decline beginning already in the 2040s. Considering the much faster but shorter growth cycles of forest plantations (see figure 3.3), this is the expected result. Looking at the amount removed by A/R and the respective LCOC, this scenario shows a significantly lower overall contribution of A/R at 69 GtCO$_2$, compared to 106 Gt in the baseline scenario, and a much higher LCOC of 67.54 USD GtCO$_2^{-1}$. This matches the MACC presented in figure 3.5, and shows that while using forest plantations may initially deliver faster CDR, its overall effect is negative in regards to both, the A/R potential and the associated costs.
-
-\begin{table}[h!]
-\adjustbox{max width=\textwidth}{%
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{lrrr}
-\hline
-\textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
-
-\textbf{A/R}   & 69{,}059.05  & 4{,}663.93  & 67.54 \\
-\textbf{ERW}   & 46{,}154.01  & 1{,}284.19  & 27.82 \\
-\textbf{BECCS} & 264{,}961.26 & 46{,}120.89 & 174.07 \\
-\textbf{DAC}   & 498{,}295.81 & 123{,}776.38 & 248.40 \\ \hline
-
-\textbf{Total} & 878{,}470.13 & 175{,}845.40 & 200.16 \\ \hline
-\end{tabular}}
-\caption{Breakdown of amounts removed and cost by NET - forest plantation}
-\end{table}
-
-\subsection{Increased Enhanced Weathering expansion}
-Figure A.7 presents another alternative scenario, in which which the the available rock material was doubled to start at 1\% of the global coal mining capacity and increase to 30\% over 50 years, while the annual allowable increase compared to the previous year was also doubled to 20\%.\vspace{2mm}
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=1\linewidth]{figures/optimal_dynamic_portfolio_more_erw.png}
-    \caption{Optimal dynamic portfolio with increased ERW}
-    \label{fig:optimal_dynamic_portfolio_moreerw}
-  \end{center}
-  \vspace*{-\baselineskip}
-\end{figure}
-
-Comparing the results to the baseline model, ERW, as expected, takes a much larger share of the overall portfolio and ends up delivering about 2.3 Gt of CDR annually and nearly 98 Gt overall by 2100, compared to 46 Gt in the base model. This increase is balanced out by delay of DAC operations by about 4 years, and a reduction its contributions from 451 GtCO$_2$ in the base model to 405 Gt, while the deployment profiles of A/R and BECCS remain largely stable. Overall, the deployment timeline does not materially change, showing that the recommendations regarding investments and policies derived from the base model remain true even if ERW is ramped up more quickly than expected. Looking at the overall costs, we see a reduction in the weighted average cost from 187.40 USD to only 172.87 USD tCO$_2^{-1}$ due to the increase in lower-cost CDR from ERW.
-
-\begin{table}[h!]
-\adjustbox{max width=\textwidth}{%
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{lrrr}
-\hline
-\textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
-
-\textbf{A/R}   & 105{,}564.14 & 1{,}074.50  & 10.18 \\
-\textbf{ERW}   & 97{,}913.77  & 2{,}796.87  & 28.56 \\
-\textbf{BECCS} & 270{,}167.08 & 46{,}990.45 & 173.93 \\
-\textbf{DAC}   & 405{,}129.87 & 101{,}067.19 & 249.47 \\ \hline
-
-\textbf{Total} & 878{,}774.86 & 151{,}929.01 & 172.87 \\ \hline
-\end{tabular}}
-\caption{Breakdown of amounts removed and cost by NET - increased ERW}
-\end{table}
-
-\subsection{Afforestation excluded}
-In order to consider the doubts about the permanence of A/R and its comparability to other permanent NETs, this scenario excludes the use of A/R entirely. Figure A.8 presents the resulting NET portfolio. \vspace{2mm}
+\section{Alternative Dynamic Portfolio Scenarios}
+\subsection{Afforestation Excluded}
+In order to consider common doubts about the permanence of A/R and its comparability to other permanent NETs, this scenario excludes the use of A/R entirely. Figure A.6 presents the resulting NET portfolio. \vspace{2mm}
 
 \begin{figure}[h!]
   \begin{center}
@@ -325,7 +263,7 @@ In order to consider the doubts about the permanence of A/R and its comparabilit
   \vspace*{-\baselineskip}
 \end{figure}
 
-Compared to the baseline model, BECCS now has to fully shoulder the entire CDR demand in the early years, while large-scale DAC operations begin about 8 years earlier, in the mid-2030s. Ultimately, DAC ends up delivering a total of 549 Gt of CDR, nearly 100 Gt more than in the baseline portfolio. The overall contribution of BECCS by about 20 Gt, caused by the early ramp-up, while the ERW pathway remains unchanged. Looking at the cost of this scenario, the total cost has increased by nearly 13\% to a total of about 187 trillion USD, with the average cost increasing from 187.40 USD to 212.87 USD tCO$_2^{-1}$. This significant increase demonstrates that including afforestation in CDR portfolios to delivery cheap, early results is an essential lever to improve the overall economic feasibility of large-scale carbon removal.
+Compared to the baseline model, BECCS now has to fully shoulder the entire CDR demand in the early years, while large-scale DAC operations begin about 6 years earlier, in the mid-2030s. Ultimately, DAC ends up delivering a total of 528 Gt of CDR, nearly 90 Gt more than in the baseline portfolio. The overall contribution of BECCS is increased by about 17 Gt, caused by the earlier ramp-up, while the ERW pathway remains unchanged. Looking at the cost of this scenario, the total cost has increased by 15\% to a total of about 204 trillion USD, with the average cost increasing from 201.71 USD to 232.43 USD tCO$_2^{-1}$. This significant increase demonstrates that including afforestation in CDR portfolios to delivery cheap, early results is an essential lever to improve the overall economic viability of large-scale carbon removal.
 
 \begin{table}[h!]
 \adjustbox{max width=\textwidth}{%
@@ -335,10 +273,72 @@ Compared to the baseline model, BECCS now has to fully shoulder the entire CDR d
 \textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
 
 \textbf{ERW}   & 46{,}154.01  & 1{,}284.19  & 27.82 \\
-\textbf{BECCS} & 283{,}509.60 & 49{,}287.86 & 173.85 \\
-\textbf{DAC}   & 549{,}311.89 & 136{,}520.90 & 248.53 \\ \hline
+\textbf{BECCS} & 305{,}083.90 & 54{,}594.50 & 178.95 \\
+\textbf{DAC}   & 527{,}777.62 & 148{,}159.60 & 280.72 \\ \hline
 
-\textbf{Total} & 878{,}975.50 & 187{,}092.95 & 212.87 \\ \hline
+\textbf{Total} & 879{,}015.53  & 204{,}038.29 & 232.12 \\ \hline
 \end{tabular}}
-\caption{Breakdown of amounts removed and cost by NET - afforestation excluded}
+\caption{Breakdown of amounts removed and cost by NET - no afforestation}
+\end{table}
+
+\subsection{Afforestation using Forest Plantations}
+The baseline portfolio presented in chapter 4 uses assisted natural regeneration for afforestation. Figure A.7 presents an alternative scenario which uses forest plantations, that is manually planted forests, instead.\vspace{2mm}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/optimal_dynamic_portfolio_planted_ar.png}
+    \caption{Optimal dynamic portfolio using forest plantation}
+    \label{fig:optimal_dynamic_portfolio_planted_ar}
+  \end{center}
+  \vspace*{-\baselineskip}
+\end{figure}
+
+Compared to the baseline model, A/R ramps up faster, but also shows exhaustion much earlier, with the decline beginning already in the 2040s. Considering the much faster but shorter growth cycles of forest plantations (see Figure 3.3), this is the expected result. Looking at the amount removed by A/R and the respective LCOC, this scenario shows a significantly lower overall contribution of A/R at 71 GtCO$_2$, compared to 106 Gt in the baseline scenario, and a much higher LCOC of 68.99 USD tCO$_2^{-1}$. This matches the MACC presented in Figure 3.5, and shows that while using forest plantations may initially deliver faster CDR, its overall effect is negative in regards to both, the A/R potential and the associated costs.
+
+\begin{table}[h!]
+\adjustbox{max width=\textwidth}{%
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
+
+\textbf{A/R}   & 71{,}312.62  & 4{,}920.13  & 68.99 \\
+\textbf{ERW}   & 46{,}154.01  & 1{,}284.19  & 27.82 \\
+\textbf{BECCS} & 278{,}267.96 & 49{,}438.34 & 177.66 \\
+\textbf{DAC}   & 482{,}726.66 & 135{,}647.66 & 281.00 \\ \hline
+
+\textbf{Total} & 878{,}461.25 & 191{,}290.32 & 217.76 \\ \hline
+\end{tabular}}
+\caption{Breakdown of amounts removed and cost by NET - forest plantation}
+\end{table}
+
+\subsection{Increased Enhanced Weathering}
+Figure A.8 presents another alternative scenario, in which which the the available rock material was doubled to start at 1\% of the global coal mining capacity and increase to 30\% over 50 years, while the annual allowable increase compared to the previous year was also doubled to 20\%.\vspace{2mm}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figures/optimal_dynamic_portfolio_more_erw.png}
+    \caption{Optimal dynamic portfolio with increased ERW}
+    \label{fig:optimal_dynamic_portfolio_moreerw}
+  \end{center}
+  \vspace*{-\baselineskip}
+\end{figure}
+
+Comparing the results to the baseline model, ERW, as expected, takes a much larger share of the overall portfolio and ends up delivering about 2.3 Gt of CDR annually and over 95 Gt overall by 2100, compared to 46 Gt in the base model. This increase is balanced out by delay of DAC operations by a few years, and a reduction its contributions from 439 GtCO$_2$ in the base model to 394 Gt, while the deployment profiles of A/R and BECCS remain largely stable. Overall, the deployment timeline does not materially change, showing that the recommendations regarding investments and policies derived from the base model remain true even if ERW is ramped up more quickly than expected. Looking at the overall costs, we see a reduction in the weighted average cost from 201.71 USD to only 188.53 USD tCO$_2^{-1}$ due to the increase in lower-cost CDR from ERW.
+
+\begin{table}[h!]
+\adjustbox{max width=\textwidth}{%
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Technology} & \textbf{Amount removed (Mt)} & \textbf{Total cost (B USD)} & \textbf{Average cost (USD)} \\ \hline
+
+\textbf{A/R}   & 105{,}629.34 & 1{,}085.26  & 10.27 \\
+\textbf{ERW}   & 95{,}405.32  & 2{,}717.61  & 28.48 \\
+\textbf{BECCS} & 284{,}193.00 & 50{,}500.17 & 177.70 \\
+\textbf{DAC}   & 393{,}550.33 & 111{,}246.92 & 282.68 \\ \hline
+
+\textbf{Total} & 878{,}777.99 & 165{,}549.96 & 188.39 \\ \hline
+\end{tabular}}
+\caption{Breakdown of amounts removed and cost by NET - increased ERW}
 \end{table}

@@ -1,6 +1,6 @@
 \section{Enhanced Weathering}
-Enhanced rock weathering generally consists of three stages: The Mining and processing stage, the transport and application stage, and the weathering and dissolution stage. The first two stages lead from the rock in a mine to the application of rock dust on the field and usually cause significant carbon emissions, while the final stage, which spans years or even decades, contributes negative emissions by drawing carbon dioxide from the air during weathering.
-\subsection{Mining, processing and application}
+Enhanced rock weathering generally consists of three stages: The mining and processing stage, the transport and application stage, and the weathering and dissolution stage. The first two stages lead from the rock in a mine to the application of rock dust on the field and usually cause significant carbon emissions, while the final stage, which spans years or even decades, contributes negative emissions by drawing carbon dioxide from the air during weathering.
+\subsection{Mining, Processing and Application}
 As an input material, ERW can use a wide range of silicate-rich rocks, such as olivine-rich forsterite or volcanic basalt. These materials are abundantly available around the world \parencite{breunig_life_2024}, and can usually be extracted using open-pit surface quarrying.\vspace{2mm}
 
 The mining process typically starts with the drilling and blasting of rock formations in order to break loose large rock chunks, which are then loaded onto large haul trucks for transportation to the processing facility. The processing then occurs in multiple stages, during which the rocks are crushed and ground into a fine dust with a particle size of no more than 10 microns.\vspace{2mm}
@@ -20,7 +20,7 @@ The finely ground rock dust is then loaded onto trucks and transported to the ap
 \subsection{Weathering}
 To calculate the weathering rate and total dissolution time of olivine rock, a shrinking core model depending on the soil acidity and temperature is used.\vspace{2mm}
 
-Weathering rates for olivine-rich rock material, dependent on soil pH values, are available from the literature, based on a range of experiments conducted at a constant temperature of 25 °C, as collected by \textcite{hangx_coastal_2009}, see figure 3.8.
+Weathering rates for olivine-rich rock material, dependent on soil pH values, are available from the literature, based on a range of experiments conducted at a constant temperature of 25 °C, as collected by \textcite{hangx_coastal_2009}, see Figure 3.8.
 
 From these datapoints, a logarithmic relationship was extrapolated:
 \begin{equation}
@@ -40,7 +40,7 @@ where \(d_0\) is the beginning grain size in meters, \(\Omega\) is the molar vol
   t = \frac{d_0[1-(1-\frac{X}{100})^\frac{1}{3}]}{2R_{\text{diss}}\Omega}
 \end{equation}
 with \(X\) being the desired dissolution grade in percent.
-\subsection{Steady-state potential and costs}
+\subsection{Steady-state Potential and Costs}
 \subsubsection{Effective annual dissolution rate}
 In the second step, the required annual application rate per hectare to reach a steady state of application and dissolution has to be calculated.
 Let the remaining fraction of the initial rock mass at time \(t\) be \(m(t) = 1 - X(t) = \frac{d(t)^3}{d_0^3}\). Since the final dissolution time \(T=\frac{d_0}{2R_{\text{diss}}\Omega}\), this can also be written as
@@ -93,29 +93,29 @@ To calculate the levelized cost of carbon considering transport and leakage (\(\
   \text{LCOCR}^+ = \frac{\text{LCOCR}}{1-\alpha}
 \end{equation}
 
-\subsection{Marginal Abatement Cost Curve}
-To calculate a global marginal abatement cost curve (MACC), the primary required input variables are the available land area, the average soil temperatures and pH values, as well as the costs for mining equipment, labour and energy, by country. The rock material required is generally considered to be abundantly available and is assumed not to be a constraint \parencite{hangx_coastal_2009, strefler_potential_2018}.\vspace{2mm}
+\subsection{Marginal Removal Cost Curve}
+To calculate a global marginal removal cost curve (MACC), the primary required input variables are the available land area, the average soil temperatures and pH values, as well as the costs for mining equipment, labour and energy, by country. The rock material required is generally considered to be abundantly available and is assumed not to be a constraint \parencite{hangx_coastal_2009, strefler_potential_2018}.\vspace{2mm}
 
 The available land area was calculated based on data for global agricultural land from FAOSTAT \parencite{fao_faostat_2025}. Agricultural land is relatively easy to treat using agricultural equipment, compared to forest areas, which require application by plane. The limitation to agricultural land therefore served as a conservative estimate of the land area available for ERW.\vspace{2mm}
 
 In the next step, data on the global average soil temperature and pH values by country were collected from \textcite{lembrechts_global_2022} and \textcite{hengl_soilgrids250m_2017}, respectively, and processed using the open-source QGIS application. The model described above was then applied to calculate the weathering speed and effective dissolution rate ($f_\text{eff}$) for each country. The desired steady-state inventory ($S^*$) of 30 tonnes per hectare, based on experiments of the \textcite{carbon_drawdown_initiative_how_2022}, was then divided by the effective dissolution rate to calculate the annual application and dissolution rates.\vspace{2mm}
 
-A project lifetime of 100 years was assumed, and using the CO$_2$ uptake ratio of $\eta = 0.76$ \parencite{breunig_life_2024} and grain size $d_0 = 10$ micron, the annual CDR potential by country was calculated from the available agricultural area in hectares and the dissolution rate per hectare. The cost per tonne of rock applied was calculated based on the CapEx required for a representative mining operation, the modeled transport, labor and energy required for processing and application, as well as country level data on wages. Finally, formulas (3.13) and (3.14) were  applied to calculate the LCOCR and LCOCR$^+$. This method yielded country-level data on the cost and potential of ERW.\vspace{2mm}
+A project lifetime of 100 years was assumed, and using the CO$_2$ uptake ratio of $\eta = 0.76$ \parencite{breunig_life_2024} and grain size $d_0 = 10$ micron, the annual CDR potential by country was calculated from the available agricultural area in hectares and the dissolution rate per hectare. The cost per tonne of rock applied was calculated based on the CapEx required for a representative mining operation, the modeled transport, labor and energy required for processing and application, as well as country level data on wages. Finally, formulas 3.13 and 3.14 were  applied to calculate the LCOCR and LCOCR$^+$. This method yielded country-level data on the cost and potential of ERW.\vspace{2mm}
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=1\linewidth]{figures/ewr_macc_chart.png}
-    \caption{Global ERW marginal abatement cost curves}
+    \caption{Global ERW marginal removal cost curves}
     \label{fig:erw_macc_chart}
   \end{center}
   \vspace*{-\baselineskip}
 \end{figure}
 
-The results show that there is a significant, gigaton-scale CDR potential at a cost of less than 40 USD, with the whole potential of around 9 GtCO$_2$ per year still being available at below 70 USD. Theoretically, therefore, ERW alone would be able to cover nearly all of the required CDR until 2050. However, as discussed in chapter 2.6, it should be noted that the real potential of ERW will probably be constrained by the social and political acceptance of large-scale mining operations, and the bureaucratic and logistical hurdles associated with them. These limitations are not considered in the present MACCs. Note that the total potential in the right-hand panel is lower due to the leakage reducing net CDR.
+The results show that there is a significant, gigaton-scale CDR potential at a cost of less than 40 USD, with the whole potential of around 9 GtCO$_2$ per year still being available at below 70 USD. Theoretically, therefore, ERW alone would be able to cover nearly all of the required CDR until 2050. However, as discussed in chapter 2.6, it should be noted that the real potential of ERW will probably be constrained by the social and political acceptance of large-scale mining operations, and the bureaucratic and logistical hurdles associated with them. These limitations are not considered in the present MACCs. Note that the total potential in the right-hand panel is lower due to leakage reducing net CDR.
 
-\subsection{Case Study: Enhanced rock weathering in the USA}
+\subsection{Case Study: Enhanced Rock Weathering in the USA}
 The United States can serve as a useful case study for enhanced rock weathering due to its large land area and high technological and economic development.\vspace{2mm}
 
-The primary input variables for the present enhanced weathering model are energy and labour costs, the environmental conditions (i.e. the average pH value and temperature of the soil), the chosen grain size of the rock dust (\(d_0\)), as well as the desired steady-state inventory per hectare (\(S^*\)). For this case study, all of these variables were considered on a national average level. For the full overview of input variables for the US-base example case, see table 3.3.\vspace{2mm}
+The primary input variables for the present enhanced weathering model are energy and labour costs, the environmental conditions (i.e. the average pH value and temperature of the soil), the chosen grain size of the rock dust (\(d_0\)), as well as the desired steady-state inventory per hectare (\(S^*\)). For this case study, all of these variables were considered on a national average level. For the full overview of input variables for the US-base example case, see Table 3.3.\vspace{2mm}
 
 \begin{figure}[ht]
   \centering
@@ -124,11 +124,13 @@ The primary input variables for the present enhanced weathering model are energy
   \label{fig:usa_sample_case}
 \end{figure}
 
-Based on these inputs, and using formulas (3.1) and (3.2), the average dissolution rate for the United States was calculated to be \(R_\text{diss, USA} = 9.83494 * 10^{-11}\) mol sec$^{-1}$. This results in a final dissolution time of \(T_\text{USA} = 37.47\) years, with the average lifetime of \(L_\text{USA} = 9.37\) years, and the effective annual dissolution rate \(f_\text{eff, USA} = 10.12\%\). This rate means that an annual application of \(A^* = \frac{30}{0.1012} = 3.04\) t ha$^{-1}$ is required to eventually reach a steady state inventory of \(S^* = 30 \) t ha$^{-1}$ after approximately 90 years, with 95\% of the progress being achieved within the first 35 years (see Figure 3.10). In the steady state, the annual dissolution (\(D_t\)) will equal the application (\(A^*\)), and the carbon dioxide removed annually in this example case can be calculated as $q(t) = \eta D_t = 0.76\: tCO^2\; tOL^{-1} * 3.04\; tOL\; ha^{-1} = 2.3104\; tCO^2\; ha^{-1}$.\vspace{2mm}
+Based on these inputs, and using formulas 3.1 and 3.2, the average dissolution rate for the United States was calculated to be \(R_\text{diss, USA} = 9.83494 * 10^{-11}\) mol sec$^{-1}$. This results in a final dissolution time of \(T_\text{USA} = 37.47\) years, with the average lifetime of \(L_\text{USA} = 9.37\) years, and the effective annual dissolution rate \(f_\text{eff, USA} = 10.12\%\). This rate means that an annual application of \(A^* = \frac{30}{0.1012} = 3.04\) t ha$^{-1}$ is required to eventually reach a steady state inventory of \(S^* = 30 \) t ha$^{-1}$ after approximately 90 years, with 95\% of the progress being achieved within the first 35 years (see Figure 3.10). In the steady state, the annual dissolution (\(D_t\)) will equal the application (\(A^*\)), and the carbon dioxide removed annually in this example case can be calculated as $q(t) = \eta D_t = 0.76\: tCO^2\; tOL^{-1} * 3.04\; tOL\; ha^{-1} = 2.3104\; tCO^2\; ha^{-1}$.\vspace{2mm}
 
 \begin{wraptable}{r}{9.5cm}
 \vspace*{-\baselineskip}
-  \begin{tabular}{llr}
+\small
+\begin{tabular}{llr}
+\hline
 \textbf{General economic variables} &           &                      \\ \hline
 Capital recovery factor             & \%        & 9.44                 \\
 Electricity price                   & USD MWh$^{-1}$  & 44.00                \\
@@ -142,17 +144,17 @@ Truck fuel consumption              & L km$^{-1}$    & 0.40                 \\
 Truck avg. speed                    & km hr$^{-1}$   & 80                   \\
 Rail energy consumption             & kWh t$^{-1}$ km$^{-1}$ & 0.1836               \\
 Tractor fuel consumption            & L hr$^{-1}$     & 16                   \\ \hline
-                                    &           & \multicolumn{1}{l}{} \\
+                                    &           & \multicolumn{1}{l}{} \\ \hline
 \textbf{ERW-specific variables}     &           & \multicolumn{1}{l}{} \\ \hline
 Desired \(S^*\)                     & t ha$^{-1}$    & 30                   \\
 Particle size \(d_0\)               & micron    & 10                   \\
 Avg. soil pH value                  &           & 6.229                \\
 Avg. soil temperature               & °C        & 8.961                \\ \hline
 \end{tabular}
-  \captionof{table}{ERW input variables, US-based case}\label{us-case-table}
-  \vspace*{-\baselineskip}
+\captionof{table}{ERW input variables, US-based case}\label{us-case-table}
+\vspace*{-\baselineskip}
 \end{wraptable}
 
 To calculate the cost per tonne of rock material applied, a sample mining operation with a volume of 15 Mt rock per year is used. This yields CapEx of 0.63 US\$ and, assuming annual maintenance costs of 2.2\% of total CapEx, fixed costs of 0.147 US\$, per tonne of olivine rock applied to the field. Furthermore, the variable cost is calculated from the energy and labour required for processing, transport and application, and adds 33.51 USD per tonne. This shows that the majority of the cost is attributable to the labour and logistics required for processing and application, while CapEx and fixed costs make up only a small fraction of the total costs.\vspace{2mm}
 
-Plugging in the cost per tonne of rock material applied into formula (3.13) yields a LCOCR of 50.07 USD per tonne of CO$_2$ removed. Finally, the leakage factor $\alpha$ is calculated to be 18.66\%, based on the amount of electric energy and Diesel used in the entire process and their respective emission factors from table 3.1. Using formula 3.14, this results in a final LCOCR$^+$ of 61.55 USD. Niote that if more renewable energy or sustainable fuels were used, the leakage factor, and with it the final LCOCR$^+$, could be decreased significantly. For the detailed techo-economic parameters and cost structure of the sample ERW mining operation, see appendix 3.
+Plugging in the cost per tonne of rock material applied into formula 3.13 yields a LCOCR of 50.07 USD per tonne of CO$_2$ removed. Finally, the leakage factor $\alpha$ is calculated to be 18.66\%, based on the amount of electric energy and Diesel used in the entire process and their respective emission factors from Table 3.1. Using formula 3.14, this results in a final LCOCR$^+$ of 61.55 USD. Niote that if more renewable energy or sustainable fuels were used, the leakage factor, and with it the final LCOCR$^+$, could be decreased significantly. For the detailed techo-economic parameters and cost structure of the sample ERW mining operation, see Appendix 3.

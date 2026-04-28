@@ -21,6 +21,7 @@
 \usepackage{verbatim}
 \usepackage{amsmath}
 \usepackage{multirow}
+\usepackage[cmyk]{xcolor}
 
 \newcommand{\detailtexcount}[1]{%
   \immediate\write18{texcount -merge -sum -q #1.tex output.bbl > #1.wcdetail }%
@@ -82,7 +83,7 @@
 \renewcommand{\thepage}{\roman{page}}
 \setlength{\parindent}{0pt}
 \captionsetup{justification=raggedright, singlelinecheck=false}
-
+%TC:ignore
 \input{title.tex}
 
 \input{abstract.tex}
@@ -101,7 +102,7 @@
 \nomenclature{ERW}{Enhanced Rock Weathering}
 \nomenclature{LCOC}{Levelized Cost of Carbon Captured}
 \nomenclature{L-DAC}{Liquid Direct Air Capture}
-\nomenclature{MACC}{Marginal Abatement Cost Curve}
+\nomenclature{MRCC}{Marginal Removal Cost Curve}
 \nomenclature{MRV}{Measurement, Reporting, and Verification}
 \nomenclature{NET}{Negative Emission Technology}
 \nomenclature{PPP}{Purchasing Power Parity}
@@ -110,6 +111,7 @@
 \nomenclature{VCM}{Voluntary Carbon Market}
 \printnomenclature
 \newpage
+%TC:endignore
 
 \setcounter{page}{1}
 \renewcommand{\thepage}{\arabic{page}}
@@ -118,13 +120,14 @@
 \input{portfolio_development.tex}
 \input{conclusion.tex}
 
+%TC:ignore
 \appendix
 \input{appendix.tex}
 
 \printbibliography
-
+%TC:endignore
 \input{declaration.tex}
 
-\newpage
-\detailtexcount{main}
+%\newpage
+%\detailtexcount{main}
 \end{document}
